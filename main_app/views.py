@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Animal
-from .forms import FeedingForm
+from .forms import FeedingForm, OwnerForm
 
 def home(request):
     return render(request, 'home.html')
@@ -24,6 +24,14 @@ def add_feeding(request, animal_id):
         new_feeding = form.save(commit=False)
         new_feeding.animal_id = animal_id
         new_feeding.save()
+    return redirect('animals_detail', animal_id=animal_id)
+
+def add_owner(request, animal_id):
+    form = OwnerForm(request.POST)
+    if form.is_valid():
+        new_owner = form.save(commit=False)
+        new_owner.animal_id = animal_id
+        new_owner.save()
     return redirect('animals_detail', animal_id=animal_id)
 
 class AnimalCreate(CreateView):

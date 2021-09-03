@@ -41,6 +41,27 @@
     </div>
   </div>
   </div>
+  <form
+      action="{% url 'add_owner' animal.id %}" 
+      method="post" 
+      class="subsection-content"
+    >
+      {% if animal.has_owner %}
+      <h1>{{owner.name}}
+      {% else %}
+        <p class="unfed">{{animal.name}} might be hungry!</p>
+      {% endif %}
+      {% csrf_token %}
+      {{ feeding_form.as_p }}
+      <button type="submit" class="btn submit">Add Feeding</button>
+    </form>
+  <div class="animal-img">
+    <img 
+      src="" 
+      alt="A skater boy animal"
+    >
+  </div>
+  
 </section>
 <div class="feedings-toy-container">
   <section class="feedings">
@@ -65,6 +86,11 @@
       method="post" 
       class="subsection-content"
     >
+      {% if animal.fed_for_today %}
+        <p class="fed">{{animal.name}} has been fed all their meals for today!</p>
+      {% else %}
+        <p class="unfed">{{animal.name}} might be hungry!</p>
+      {% endif %}
       {% csrf_token %}
       {{ feeding_form.as_p }}
       <button type="submit" class="btn submit">Add Feeding</button>
