@@ -29,12 +29,8 @@
     <nav> 
       <ul>
         {% comment %} {% if user.is_authenticated %} {% endcomment %}
-          <li><a href="#">All Animals</a></li>
-          <li><a href="#">All Tasks</a></li>
-          <li><a href="#">Add an Animal</a></li>
-          <li><a href="#">Add a Task</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Log Out</a></li>
+          <li><a href="/animals">All Animals</a></li>
+          <li><a href="/about">About</a></li>
         {% comment %} {% else %}
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'home' %}">Log In</a></li>

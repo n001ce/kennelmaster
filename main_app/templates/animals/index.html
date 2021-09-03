@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href=""/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>Animal List</h1>
+</section>
+
+<section class="card-container">
+  {% for animal in animals %}
+    <div class="card">
+      <div class="card-content">
+        <div class="card-img-container">
+          <img 
+            src="" 
+            alt="A skater boy"
+          >
+        </div>
+        <h2 class="card-title">{{ animal.name }}</h2>
+        {% if animal.age > 0 %}
+          <p>A {{ animal.age }} year old {{ animal.type }}</p>
+        {% else %}
+          <p>A {{ animal.breed }} {{animal.type}}.</p>
+        {% endif %}
+        <p><small>{{ animal.description }}</small></p>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
