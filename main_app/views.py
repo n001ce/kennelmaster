@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Animal
+from .forms import FeedingForm
 
 def home(request):
     return render(request, 'home.html')
@@ -14,7 +15,8 @@ def animals_index(request):
 
 def animals_detail(request, animal_id):
   animal = Animal.objects.get(id=animal_id)
-  return render(request, 'animals/detail.html', { 'animal': animal })
+  feeding_form = FeedingForm()
+  return render(request, 'animals/detail.html', { 'animal': animal, 'feeding_form':feeding_form })
 
 class AnimalCreate(CreateView):
   model = Animal

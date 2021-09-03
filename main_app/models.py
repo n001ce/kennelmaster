@@ -21,7 +21,7 @@ class Animal(models.Model):
         return reverse('animals_detail', kwargs={'animal_id':self.id})
 
 class Feeding(models.Model):
-    date = models.DateField()
+    date = models.DateField('Feeding Date')
     meal = models.CharField(
         max_length=1,
         choices = MEALS,
