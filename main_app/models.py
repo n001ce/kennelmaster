@@ -7,13 +7,6 @@ MEALS = (
     ('D', 'Dinner')
 )
 
-class Owner(models.Model):
-    f_name = models.CharField(max_length=50)
-    l_name = models.CharField(max_length=50)
-    p_num = models.IntegerField()
-
-    def __str__(self):
-        return self.f_name
 
 
 class Animal(models.Model):
@@ -22,7 +15,6 @@ class Animal(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     age = models.IntegerField()
-    owner=models.ForeignKey(Owner, on_delete = models.CASCADE)
     
     def __str__(self):
         return self.name
@@ -32,7 +24,18 @@ class Animal(models.Model):
     
     def fed_for_today(self):
         return self.feeding_set.filter(date=date.today()).count() >= len(MEALS)
+   
+    def has_owner(self):
+        return self.owner_set.count() >= 1
 
+class Owner(models.Model):
+    f_name = models.CharField(max_length=50)
+    l_name = models.CharField(max_length=50)
+    p_num = models.IntegerField()
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Owner for animal_id: {self.animal_id}"
 
 
 class Feeding(models.Model):

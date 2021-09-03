@@ -16,7 +16,8 @@ def animals_index(request):
 def animals_detail(request, animal_id):
   animal = Animal.objects.get(id=animal_id)
   feeding_form = FeedingForm()
-  return render(request, 'animals/detail.html', { 'animal': animal, 'feeding_form':feeding_form })
+  owner_form = OwnerForm()
+  return render(request, 'animals/detail.html', { 'animal': animal, 'feeding_form':feeding_form, 'owner': owner_form })
 
 def add_feeding(request, animal_id):
     form = FeedingForm(request.POST)
@@ -32,15 +33,17 @@ def add_owner(request, animal_id):
         new_owner = form.save(commit=False)
         new_owner.animal_id = animal_id
         new_owner.save()
-    return redirect('animals_detail', animal_id=animal_id)
+    return redirect('animals_detail', animal_id = animal_id)
+
+
 
 class AnimalCreate(CreateView):
   model = Animal
-  fields = ['type', 'breed', 'name', 'owner', 'description', 'age']
+  fields = ['type', 'breed', 'name', 'description', 'age']
 
 class AnimalUpdate(UpdateView):
     model = Animal
-    fields = ['description', 'age', 'owner']
+    fields = ['description', 'age']
 
 class AnimalDelete(DeleteView):
     model = Animal
