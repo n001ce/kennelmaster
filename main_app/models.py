@@ -1,6 +1,7 @@
 from django.db import models
+from django.db.models.deletion import CASCADE
 from django.urls import reverse
-
+from datetime import date
 MEALS = (
     ('B', 'Breakfast'),
     ('D', 'Dinner')
@@ -19,6 +20,10 @@ class Animal(models.Model):
     
     def get_absolute_url(self):
         return reverse('animals_detail', kwargs={'animal_id':self.id})
+    
+    def fed_for_today(self):
+        return self.feeding_set.filter(date=date.today()).count() >= len(MEALS)
+
 
 class Feeding(models.Model):
     date = models.DateField('Feeding Date')
@@ -28,6 +33,10 @@ class Feeding(models.Model):
         default=MEALS[0][0]
         )
     food = models.CharField(max_length=50)
+    animal = models.ForeignKey(Animal, on_delete = models.CASCADE)
 
     def __str__(self):
         return f"{self.get_meal_display()} on {self.date}"
+
+    class Meta:
+        ordering = ['-date']
