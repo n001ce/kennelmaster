@@ -29,8 +29,12 @@
     <nav> 
       <ul>
           <li><a href="{% url 'animals_index' %}">All Animals</a></li>
+          <li><a href="{% url 'employees_index' %}">All Employees</a></li>
+          <li><a href="{% url 'tasks_index' %}">All Tasks</a></li>
           {% comment %} New link below {% endcomment %}
           <li><a href="{% url 'animals_create' %}">Add a Animal</a></li>
+          <li><a href="{% url 'employees_create' %}">Add an Employee</a></li>
+          <li><a href="{% url 'tasks_create' %}">Create a Task</a></li>
           <li><a href="{% url 'about' %}">About</a></li>
         </ul>
     </nav>

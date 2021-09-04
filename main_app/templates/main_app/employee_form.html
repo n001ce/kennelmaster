@@ -3,21 +3,25 @@
 
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}"/>
+<script defer src="{% static 'js/animal-detail.js' %}"></script>
+
 {% endblock %}
 
 {% block content %}
-<div class="page-header">
-  {% if object %}
-    <h1>Edit {{object.name}}</h1>
-  {% else %}
-    <h1>Add a Task</h1>
-  {% endif %}
+
+<div class='page-header'>
+{% if object %}
+  <h1>Edit {{ object.name }}</h1>
+{% else %}
+  <h1>Add an Employee</h1>
+{% endif %}
   <img src="" alt=""/>
 </div>
-<form action="" method="post" class="form-container" autocomplete="off">
+
+<form action="" method='post' class='form-container'>
   {% csrf_token %}
   <table>
-    {{ form.as_table }}
+    {{form.as_table}}
   </table>
   <button type="submit" class="btn submit">Submit!</button>
 </form>

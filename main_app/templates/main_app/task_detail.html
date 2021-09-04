@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/task-detail.css' %}"
+/>
+<script defer src="{% static 'js/animal-detail.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+  
+<div class="card" style="">
+  <div class="card-bg" style=""></div>
+  <div class="card-content">
+    <h3>{{task.start_time}}</h2>
+    <h2>{{ task.type }}</h2>
+    <h2>{{ task.description }}</h2>
+    <h2>{{task.employee}}</h2>
+  </div>
+</div>
+<a href="{% url 'tasks_update' task.id %}" class="btn warn">Edit</a>
+<a href="{% url 'tasks_delete' task.id %}" class="btn danger">Delete</a>
+
+{% endblock %}

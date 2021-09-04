@@ -1,0 +1,37 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/task-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>All Kennel Tasks</h1>
+  {% comment %} <img src="{% static 'images/string.svg' %}" alt="A ball of string" />
+  <img src="{% static 'images/mouse.svg' %}" alt="A mouse" />
+  <img src="{% static 'images/post.svg' %}" alt="A scratching post" />
+  <img src="{% static 'images/fish.svg' %}" alt="A fishy task" /> {% endcomment %}
+</section>
+
+<section class="card-container">
+  {% for task in task_list %}
+  <div class="card" style="">
+    <div class="card-bg" style=""></div>
+    <a href="{% url 'tasks_detail' task.id %}">
+      <div class="card-content">
+        <h2>{{ task.type[0] }}</h2>
+        <h3>{{task.start_time}}</h3>
+        <h3>{{task.employee}}</h3>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
