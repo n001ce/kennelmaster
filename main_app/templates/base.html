@@ -11,6 +11,7 @@
     type="image/png"
     {% comment %} href="{% static 'images/splash.svg' %}" {% endcomment %}
   >
+  <script src="https://kit.fontawesome.com/406d84d012.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
   <script defer src="{% static 'js/sidebar.js' %}"></script>
@@ -29,7 +30,7 @@
       <ul class="nav_list">
         <li>
           <a href="{% url 'animals_index' %}">
-            <i class='bx bx-grid-alt'></i>
+            <i class="fas fa-paw"></i>
             <span class="links_name">All Animals</span>
           </a>
             {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
@@ -49,27 +50,6 @@
             {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
         </li>
         <li>
-          <a href="{% url 'animals_create' %}">
-            <i class='bx bx-grid-alt'></i>
-            <span class="links_name">New Animal</span>
-          </a>
-            {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-        </li>
-        <li>
-          <a href="{% url 'employees_create' %}">
-            <i class='bx bx-id-card'></i>
-            <span class="links_name">New Employee</span>
-          </a>
-            {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-        </li>
-        <li>
-          <a href="{% url 'tasks_create' %}">
-            <i class='bx bx-task' ></i>
-            <span class="links_name">New Task</span>
-          </a>
-            {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-        </li>
-        <li>
           <a href="{% url 'about' %}">
             <i class='bx bx-grid-alt'></i>
             <span class="links_name">About</span>
@@ -81,6 +61,5 @@
     <div>   
       {% block content %}
       {% endblock %}
-    </div>
 </body>
 </html>

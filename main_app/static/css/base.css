@@ -1,61 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
-
-body{
-    position: relative;
-    min-height: 100vh;
-    width: 100%;
-    overflow: hidden;
-}
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 50px 1fr 50px;
-    grid-template-areas:
-      "sidebar header"
-      "sidebar main"
-      "sidebar footer";
-    height: 100vh;
-  }
-  
-  /* Give every child element its grid name */
-.header {
-grid-area: header;
-background-color: #648ca6;
-}
-
-
-.main {
-grid-area: main;
-background-color: #8fd4d9;
-}
-
-.footer {
-grid-area: footer;
-background-color: #648ca6;
-}
-
-.header, .footer {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 0 16px;
-background-color: #648ca6;
-}
-
-.main-header {
-display: flex;
-justify-content: space-between;
-margin: 20px;
-padding: 20px;
-height: 150px; /* Force our height since we don't have actual content yet */
-background-color: #e3e4e6;
-color: slategray;
-}
-
 .sidebar{
     position: fixed;
     grid-area: sidebar;
@@ -160,3 +107,4 @@ color: slategray;
     opacity: 1;
     pointer-events: auto;
 }
+

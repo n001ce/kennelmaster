@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block head %}
+{% block head %}\
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
 {% endblock %}
 
@@ -17,20 +17,22 @@
 </div>
 <div class="main-overview">
   <div class="overviewcard">
-    <div class="overviewcard__icon">Animals</div>
-    <div class="overviewcard__info">Card</div>
+    <a href="{% url 'animals_index' %}">
+      <i class="fas fa-paw fa-4x"></i>
+    </a>
+    <h1>Animals<h1>
   </div>
   <div class="overviewcard">
-    <div class="overviewcard__icon">Tasks</div>
-    <div class="overviewcard__info">Card</div>
+    <a href="{% url 'tasks_index' %}">
+      <i class="fas fa-tasks fa-4x"></i>
+    </a>
+    <h1>Tasks</h1>
   </div>
   <div class="overviewcard">
-    <div class="overviewcard__icon">Employees</div>
-    <div class="overviewcard__info">Card</div>
-  </div>
-  <div class="overviewcard">
-    <div class="overviewcard__icon">Customers</div>
-    <div class="overviewcard__info">Card</div>
+    <a href="{% url 'employees_index' %}">
+      <i class="far fa-address-card fa-4x"></i>
+    </a>
+    <h1>Employees</h1>
   </div>
 </div>
 <div class="main-cards">

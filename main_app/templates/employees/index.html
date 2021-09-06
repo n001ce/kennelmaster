@@ -2,34 +2,27 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href=""/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"/>
 {% endblock %}
 
 {% block content %}
 
-<section class="page-header">
+<section id="pageHeader">
   <h1>Employee List</h1>
 </section>
-
-<section class="card-container">
+<div class="grid-container">
   {% for employee in employees %}
     <div class="card">
-      <a href="{% url 'employees_detail' employee.id %}">
-        <div class="card-content">
-          <div class="card-img-container">
-            <img 
-              src="" 
-              alt="A skater boy employee"
-            >
-          </div>
-          <h2 class="card-title">{{ employee.f_name }}</h2>
-          <h2>{{employee.l_name}}</h2>
-          <h2>{{employee.p_num}}</h2>
-          <h2>{{employee.emergency_contact}}</h2>
+        <div class="img">
+          <a href="{% url 'employees_detail' employee.id %}">
+            <i class='bx bx-id-card fa-9x'></i>
+          </a>
         </div>
-      </a>
+        <div class="content">
+          <h2 class="card-title">{{ employee.f_name }} {{employee.l_name}}</h2>
+        </div>
     </div>
   {% endfor %}
 </section>
-
+</div>
 {% endblock %}

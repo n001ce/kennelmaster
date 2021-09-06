@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href=""/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"/>
 {% endblock %}
 
 {% block content %}
@@ -11,28 +11,26 @@
   <h1>Animal List</h1>
 </section>
 
-<section class="card-container">
-  {% for animal in animals %}
-    <div id="card">
-      <a href="{% url 'animals_detail' animal.id %}">
-        <div id="img">
-            <img 
-              src="" 
-              alt="A skater boy animal"
-            >
-        </div>
-        <div id="content">
-            <h2 class="card-title">{{ animal.name }}</h2>
-            {% if animal.age > 0 %}
-                <p>A {{ animal.age }} year old {{ animal.type}}</p>
-            {% else %}
-                <p>A {{ animal.breed }} {{animal.type}}.</p>
-            {% endif %}
-                <p><small>{{ animal.description }}</small></p>
-        </div>
-      </a>
-    </div>
-  {% endfor %}
-</section>
+<div class="grid-container">
+    {% for animal in animals %}
+      <div class="card">
+          <div class="img">
+        <a href="{% url 'animals_detail' animal.id %}">
+            <i id="animal" class="fas fa-paw fa-9x"></i>
+        </a>
+          </div>
+          <div class="content">
+              <h2 class="card-title">{{ animal.name }}</h2>
+              {% if animal.age > 0 %}
+                  <p>A {{ animal.age }} year old {{ animal.type}}</p>
+              {% else %}
+                  <p>A {{ animal.breed }} {{animal.type}}.</p>
+              {% endif %}
+                  <p><small>{{ animal.description }}</small></p>
+          </div>
+      </div>
+    {% endfor %}
+  </section>
+</div>
 
 {% endblock %}
