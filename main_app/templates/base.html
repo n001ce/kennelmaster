@@ -19,70 +19,68 @@
   {% endblock %}
 </head>
 <body>
-  <div class="sidebar">
-    <div class="logo_content">
-      <div class="logo">
-        <div class="logo_name">Kennel Manager</div>
+    <div class="sidebar">
+      <div class="logo_content">
+        <div class="logo">
+          <div class="logo_name">Kennel Manager</div>
+        </div>
+        <i class='bx bx-menu' id="btn"></i>
       </div>
-      <i class='bx bx-menu' id="btn"></i>
+      <ul class="nav_list">
+        <li>
+          <a href="{% url 'animals_index' %}">
+            <i class='bx bx-grid-alt'></i>
+            <span class="links_name">All Animals</span>
+          </a>
+            {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+        </li>
+        <li>
+          <a href="{% url 'employees_index' %}">
+            <i class='bx bx-id-card'></i>
+            {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+            <span class="links_name">All Employees</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'tasks_index' %}">
+            <i class='bx bx-task' ></i>
+            <span class="links_name">All Tasks</span>
+          </a>
+            {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+        </li>
+        <li>
+          <a href="{% url 'animals_create' %}">
+            <i class='bx bx-grid-alt'></i>
+            <span class="links_name">New Animal</span>
+          </a>
+            {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+        </li>
+        <li>
+          <a href="{% url 'employees_create' %}">
+            <i class='bx bx-id-card'></i>
+            <span class="links_name">New Employee</span>
+          </a>
+            {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+        </li>
+        <li>
+          <a href="{% url 'tasks_create' %}">
+            <i class='bx bx-task' ></i>
+            <span class="links_name">New Task</span>
+          </a>
+            {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+        </li>
+        <li>
+          <a href="{% url 'about' %}">
+            <i class='bx bx-grid-alt'></i>
+            <span class="links_name">About</span>
+          </a>
+            {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+        </li>
+      </ul>        
     </div>
-    <ul class="nav_list">
-      <li>
-        <a href="{% url 'animals_index' %}">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">All Animals</span>
-        </a>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-      </li>
-      <li>
-        <a href="{% url 'employees_index' %}">
-          <i class='bx bx-id-card'></i>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-          <span class="links_name">All Employees</span>
-        </a>
-      </li>
-      <li>
-        <a href="{% url 'tasks_index' %}">
-          <i class='bx bx-task' ></i>
-          <span class="links_name">All Tasks</span>
-        </a>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-      </li>
-      <li>
-        <a href="{% url 'animals_create' %}">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">New Animal</span>
-        </a>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-      </li>
-      <li>
-        <a href="{% url 'employees_create' %}">
-          <i class='bx bx-id-card'></i>
-          <span class="links_name">New Employee</span>
-        </a>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-      </li>
-      <li>
-        <a href="{% url 'tasks_create' %}">
-          <i class='bx bx-task' ></i>
-          <span class="links_name">New Task</span>
-        </a>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-      </li>
-      <li>
-        <a href="{% url 'about' %}">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">About</span>
-        </a>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-      </li>
-    </ul>        
-  </div>
-  </div>
-  <div id="mainArticle">
-    {% block content %}
-    {% endblock %}
-  </div>
- 
+    <div>   
+      {% block content %}
+      {% endblock %}
+    </div>
 </body>
 </html>
