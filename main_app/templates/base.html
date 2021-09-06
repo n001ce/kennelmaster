@@ -11,37 +11,78 @@
     type="image/png"
     {% comment %} href="{% static 'images/splash.svg' %}" {% endcomment %}
   >
-  <title>Cat Collector</title>
-   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <script defer src="{% static 'js/sidebar.js' %}"></script>
+  <title>Kennel Manager</title>
   {% block head %}
   {% endblock %}
 </head>
 <body>
-  <header>
-    <div class="header-logo-container">
-      <a href="/">
-        <img 
-          src="" 
-          alt="Kennel Master"
-        >
-      </a>
+  <div class="sidebar">
+    <div class="logo_content">
+      <div class="logo">
+        <div class="logo_name">Kennel Manager</div>
+      </div>
+      <i class='bx bx-menu' id="btn"></i>
     </div>
-    <nav> 
-      <ul>
-          <li><a href="{% url 'animals_index' %}">All Animals</a></li>
-          <li><a href="{% url 'employees_index' %}">All Employees</a></li>
-          <li><a href="{% url 'tasks_index' %}">All Tasks</a></li>
-          {% comment %} New link below {% endcomment %}
-          <li><a href="{% url 'animals_create' %}">Add a Animal</a></li>
-          <li><a href="{% url 'employees_create' %}">Add an Employee</a></li>
-          <li><a href="{% url 'tasks_create' %}">Create a Task</a></li>
-          <li><a href="{% url 'about' %}">About</a></li>
-        </ul>
-    </nav>
-  </header>
-  <main>
+    <ul class="nav_list">
+      <li>
+        <a href="{% url 'animals_index' %}">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">All Animals</span>
+        </a>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+      </li>
+      <li>
+        <a href="{% url 'employees_index' %}">
+          <i class='bx bx-id-card'></i>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+          <span class="links_name">All Employees</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'tasks_index' %}">
+          <i class='bx bx-task' ></i>
+          <span class="links_name">All Tasks</span>
+        </a>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+      </li>
+      <li>
+        <a href="{% url 'animals_create' %}">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">New Animal</span>
+        </a>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+      </li>
+      <li>
+        <a href="{% url 'employees_create' %}">
+          <i class='bx bx-id-card'></i>
+          <span class="links_name">New Employee</span>
+        </a>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+      </li>
+      <li>
+        <a href="{% url 'tasks_create' %}">
+          <i class='bx bx-task' ></i>
+          <span class="links_name">New Task</span>
+        </a>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+      </li>
+      <li>
+        <a href="{% url 'about' %}">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">About</span>
+        </a>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+      </li>
+    </ul>        
+  </div>
+  </div>
+  <div id="mainArticle">
     {% block content %}
     {% endblock %}
-  </main>
+  </div>
+ 
 </body>
 </html>

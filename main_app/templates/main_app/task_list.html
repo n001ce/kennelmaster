@@ -25,7 +25,7 @@
     <div class="card-bg" style=""></div>
     <a href="{% url 'tasks_detail' task.id %}">
       <div class="card-content">
-        <h2>{{ task.type[0] }}</h2>
+        <h2>{{ task.type }}</h2>
         <h3>{{task.start_time}}</h3>
         <h3>{{task.employee}}</h3>
       </div>
