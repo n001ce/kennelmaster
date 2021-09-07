@@ -4,62 +4,15 @@
     box-sizing: border-box;
 }
 
-body{
-    position: relative;
-    min-height: 100vh;
-    width: 100%;
-    overflow: hidden;
-}
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 50px 1fr 50px;
-    grid-template-areas:
-      "sidebar header"
-      "sidebar main"
-      "sidebar footer";
-    height: 100vh;
-  }
-  
-.header {
-grid-area: header;
-background-color: #648ca6;
-}
-
-
-
-.main {
-margin-right: 40px;
-grid-area: main;
-background-color: #8fd4d9;
-}
-
-.footer {
-grid-area: footer;
-margin-left: 100px;
-background-color: #648ca6;
-}
-
-.header, .footer {
-width: 92.8%;
-display: flex;
-margin-left: 100px;
-align-items: center;
-justify-content: space-between;
-padding: 0 16px;
-background-color: #648ca6;
-}
-
 .main-header {
-display: flex;
-justify-content: space-between;
-margin: 20px;
-margin-left: 100px;
-padding: 20px;
-height: 150px; /* Force our height since we don't have actual content yet */
-background-color: #e3e4e6;
-color: slategray;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: 150px; /* Force our height since we don't have actual content yet */
+    background-color: #e3e4e6;
+    color: slategray;
 }
+
 
 .main-overview {
     margin-left: 100px;
@@ -115,17 +68,7 @@ width: 90%;
 
 
 /* Non-mobile styles, 750px breakpoint */
-@media only screen and (min-width: 46.875em) {
-/* Show the sidenav */
-.grid-container {
-    grid-template-columns: 240px 1fr; /* Show the side nav for non-mobile screens */
-    grid-template-areas:
-    "sidenav header"
-    "sidenav main"
-    "sidenav footer";
-}
 
-}
 
 /* Medium-sized screen breakpoint (tablet, 1050px) */
 @media only screen and (min-width: 65.625em) {

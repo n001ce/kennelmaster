@@ -20,46 +20,55 @@
   {% endblock %}
 </head>
 <body>
-    <div class="sidebar">
-      <div class="logo_content">
-        <div class="logo">
-          <div class="logo_name">Kennel Manager</div>
-        </div>
-        <i class='bx bx-menu' id="btn"></i>
+  <header class="header">
+    <div class="header__search">Kennel Master</div>
+    <div class="header__avatar">Logo</div>
+  </header>
+  <div class="sidebar">
+    <div class="logo_content">
+      <div class="logo">
+        <div class="logo_name">Kennel Manager</div>
       </div>
-      <ul class="nav_list">
-        <li>
-          <a href="{% url 'animals_index' %}">
-            <i class="fas fa-paw"></i>
-            <span class="links_name">All Animals</span>
-          </a>
-            {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-        </li>
-        <li>
-          <a href="{% url 'employees_index' %}">
-            <i class='bx bx-id-card'></i>
-            {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-            <span class="links_name">All Employees</span>
-          </a>
-        </li>
-        <li>
-          <a href="{% url 'tasks_index' %}">
-            <i class='bx bx-task' ></i>
-            <span class="links_name">All Tasks</span>
-          </a>
-            {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-        </li>
-        <li>
-          <a href="{% url 'about' %}">
-            <i class='bx bx-grid-alt'></i>
-            <span class="links_name">About</span>
-          </a>
-            {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-        </li>
-      </ul>        
+      <i class='bx bx-menu' id="btn"></i>
     </div>
-    <div>   
-      {% block content %}
-      {% endblock %}
+    <ul class="nav_list">
+      <li>
+        <a href="{% url 'animals_index' %}">
+          <i class="fas fa-paw"></i>
+          <span class="links_name">All Animals</span>
+        </a>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+      </li>
+      <li>
+        <a href="{% url 'employees_index' %}">
+          <i class='bx bx-id-card'></i>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+          <span class="links_name">All Employees</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'tasks_index' %}">
+          <i class='bx bx-task' ></i>
+          <span class="links_name">All Tasks</span>
+        </a>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+      </li>
+      <li>
+        <a href="{% url 'about' %}">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">About</span>
+        </a>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+      </li>
+    </ul>        
+  </div>
+  <main class="main">   
+    {% block content %}
+    {% endblock %}
+  </main>
+  <footer class="footer">
+    <div class="footer__copyright">&copy; 2018 MTH</div>
+    <div class="footer__signature">Made with love by pure genius</div>
+  </footer>
 </body>
 </html>

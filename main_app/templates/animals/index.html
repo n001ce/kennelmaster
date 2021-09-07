@@ -2,35 +2,34 @@
 {% load static %}
 
 {% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"/>
 {% endblock %}
 
 {% block content %}
-
-<section id="pageHeader">
-  <h1>Animal List</h1>
-</section>
-
+<div class="main-header">
+  <div class="main-header__heading">Hello (User Name)</div>
+  <div class="main-header__updates">Recent Items</div>
+</div>
 <div class="grid-container">
     {% for animal in animals %}
-      <div class="card">
-          <div class="img">
-        <a href="{% url 'animals_detail' animal.id %}">
+      <div class="index-card">
+        <div class="img">
+          <a href="{% url 'animals_detail' animal.id %}">
             <i id="animal" class="fas fa-paw fa-9x"></i>
-        </a>
-          </div>
-          <div class="content">
-              <h2 class="card-title">{{ animal.name }}</h2>
-              {% if animal.age > 0 %}
-                  <p>A {{ animal.age }} year old {{ animal.type}}</p>
-              {% else %}
-                  <p>A {{ animal.breed }} {{animal.type}}.</p>
-              {% endif %}
-                  <p><small>{{ animal.description }}</small></p>
-          </div>
+          </a>
+        </div>
+        <div class="content">
+            <h2 class="card-title">{{ animal.name }}</h2>
+            {% if animal.age > 0 %}
+                <p>A {{ animal.age }} year old {{ animal.type}}</p>
+            {% else %}
+                <p>A {{ animal.breed }} {{animal.type}}.</p>
+            {% endif %}
+                <p><small>{{ animal.description }}</small></p>
+        </div>
       </div>
     {% endfor %}
-  </section>
 </div>
 
 {% endblock %}

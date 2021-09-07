@@ -1,25 +1,29 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .grid-container {
-    margin-top: 100px;
-    margin-left: 120px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas:
+      "pageHead pageHead pageHead pageHead"
       "animal animal animal animal";
-    height: 100vh;
     grid-gap:20px;
   }
-  
+
 #pageHeader{
-    margin-left: 120px;
+  grid-area: pageHead;
 }
-
-
 #animal{
     color: black;
 }
 
-.card{
+
+.index-card{
+    grid-area: animal;
     display:grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
@@ -33,8 +37,10 @@
 
 .img{
     grid-area: img;
+    height: 400px;
 }
 
 .content{
     grid-area: content;
+    height: 200px;
 }

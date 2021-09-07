@@ -3,16 +3,18 @@
 
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
 {% endblock %}
 
 {% block content %}
 
-<section id="pageHeader">
-  <h1>Employee List</h1>
-</section>
+<div class="main-header">
+  <div class="main-header__heading">Hello (User Name)</div>
+  <div class="main-header__updates">Recent Items</div>
+</div>
 <div class="grid-container">
   {% for employee in employees %}
-    <div class="card">
+    <div class="index-card">
         <div class="img">
           <a href="{% url 'employees_detail' employee.id %}">
             <i class='bx bx-id-card fa-9x'></i>

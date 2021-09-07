@@ -1,16 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block head %}\
+{% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
 {% endblock %}
 
 {% block content %}
 
-<header class="header">
-  <div class="header__search">Kennel Master</div>
-  <div class="header__avatar">Logo</div>
-</header>
 <div class="main-header">
   <div class="main-header__heading">Hello (User Name)</div>
   <div class="main-header__updates">Recent Items</div>
@@ -40,9 +36,6 @@
   <div class="card">Completed Tasks</div>
   <div class="card">Available Employees</div>
 </div>
-<footer class="footer">
-  <div class="footer__copyright">&copy; 2018 MTH</div>
-  <div class="footer__signature">Made with love by pure genius</div>
-</footer>
+
 
 {% endblock %}
