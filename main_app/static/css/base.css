@@ -31,6 +31,10 @@ body{
     width: 240px;
 }
 
+.main.active, .footer.active, .header.active{
+    margin-left: 162px;
+}
+
 .sidebar .logo_content .logo{
     color: #fff;
     display: flex;
@@ -148,8 +152,8 @@ body{
 
 @media only screen and (min-width: 46.875em) {
 /* Show the sidenav */
-    .grid-container {
-        grid-template-columns: 240px 1fr; /* Show the side nav for non-mobile screens */
+    body {
+        grid-template-columns: 78px 1fr; /* Show the side nav for non-mobile screens */
         grid-template-areas:
         "sidebar header"
         "sidebar main"

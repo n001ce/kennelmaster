@@ -2,17 +2,14 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
 {% endblock %}
 
 {% block content %}
-<div class="main-header">
-  <div class="main-header__heading">Hello (User Name)</div>
-  <div class="main-header__updates">Recent Items</div>
-</div>
-<div class="grid-container">
-    {% for animal in animals %}
+  <div class="grid-container">
+{% for animal in animals %}
+    <div class="index-container">
       <div class="index-card">
         <div class="img">
           <a href="{% url 'animals_detail' animal.id %}">
@@ -29,6 +26,7 @@
                 <p><small>{{ animal.description }}</small></p>
         </div>
       </div>
+    </div>
     {% endfor %}
 </div>
 

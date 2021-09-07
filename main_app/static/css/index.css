@@ -4,43 +4,40 @@
   box-sizing: border-box;
 }
 
+.index-header{
+  display: flex;
+  justify-content: space-between;
+  height: 150px; /* Force our height since we don't have actual content yet */
+  background-color: #e3e4e6;
+  color: slategray;
+}
+
 .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas:
-      "pageHead pageHead pageHead pageHead"
-      "animal animal animal animal";
-    grid-gap:20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "animal animal animal animal";
+  grid-gap:20px;
   }
 
-#pageHeader{
-  grid-area: pageHead;
-}
+
 #animal{
     color: black;
 }
 
 
 .index-card{
-    grid-area: animal;
-    display:grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-      "img"
-      "content";
-    background-color: yellow;
-    text-align: center;
-    justify-content: center;
+  grid-area: animal;
+  background-color: yellow;
+  text-align: center;
+  justify-content: center;
 }
 
 .img{
     grid-area: img;
-    height: 400px;
 }
 
 .content{
     grid-area: content;
-    height: 200px;
 }
