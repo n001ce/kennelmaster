@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-
+{% if user.is_authenticated %}
 <div class="main-header">
   <div class="main-header__heading">Hello (User Name)</div>
   <div class="main-header__updates">Recent Items</div>
@@ -36,6 +36,12 @@
   <div class="card">Completed Tasks</div>
   <div class="card">Available Employees</div>
 </div>
-
-
+{% else %}
+<h2>Log In</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Log In</button>
+</form>
+{%endif%}
 {% endblock %}

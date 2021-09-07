@@ -32,6 +32,7 @@
       <i class='bx bx-menu' id="btn"></i>
     </div>
     <ul class="nav_list">
+      {% if user.is_authenticated %}
       <li>
         <a href="{% url 'animals_index' %}">
           <i class="fas fa-paw"></i>
@@ -60,6 +61,36 @@
         </a>
           {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
       </li>
+      <li>
+        <a href="{% url 'logout' %}">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Log Out</span>
+        </a>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+      </li>
+      {% else %}
+      <li>
+        <a href="{% url 'about' %}">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">About</span>
+        </a>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+      </li>
+      <li>
+        <a href="{% url 'home' %}">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Home</span>
+        </a>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+      </li>
+      <li>
+        <a href="{% url 'signup' %}">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Sign Up</span>
+        </a>
+          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+      </li>
+      {% endif %}
     </ul>        
   </div>
   <main class="main">   

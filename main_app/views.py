@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
+from django.contrib.auth import login
 from .models import Animal, Employee, Task
-from .forms import FeedingForm, OwnerForm, TaskForm
-
-def home(request):
-    return render(request, 'home.html')
+from .forms import FeedingForm, OwnerForm, TaskForm, CustomUserCreationForm
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
+class Home(LoginView):
+  template_name = 'home.html'
 
 def about(request):
     return render(request, 'about.html')
@@ -45,6 +47,10 @@ def add_owner(request, animal_id):
         new_owner.save()
     return redirect('animals_detail', animal_id = animal_id)
 
+class SignUpView(CreateView):
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('home')
+    template_name = 'signup.html'
 
 class AnimalCreate(CreateView):
   model = Animal
