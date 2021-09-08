@@ -25,78 +25,120 @@
     <img src="{%static 'css/images/logo.png'%}" alt="">
     Kennel Manager
     </div>
-    <div class="topnav-right">
-      <a href={% url 'animals_create' %}>Create Animal</a>
-      <a href={% url 'tasks_create' %}>Create Task</a>
-    </div>
-  </header>
-  <div class="sidebar">
-    <div class="logo_content">
-      <div class="logo">
-        <div class="logo_name">Kennel Manager</div>
+    {% if user.is_authenticated%}
+      {% if user.type != "OWNER" %}
+      <div class="topnav-right">
+        <a href={% url 'animals_create' %}>Create Animal</a>
+        <a href={% url 'tasks_create' %}>Create Task</a>
       </div>
-      <i class='bx bx-menu' id="btn"></i>
-    </div>
-    <ul class="nav_list">
-      {% if user.is_authenticated %}
-      <li>
-        <a href="{% url 'home' %}">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Home</span>
-        </a>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-      </li>
-      <li>
-        <a href="{% url 'animals_index' %}">
-          <i class="fas fa-paw"></i>
-          <span class="links_name">All Animals</span>
-        </a>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-      </li>
-      <li>
-        <a href="{% url 'tasks_index' %}">
-          <i class='bx bx-task' ></i>
-          <span class="links_name">All Tasks</span>
-        </a>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-      </li>
-      <li>
-        <a href="{% url 'about' %}">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">About</span>
-        </a>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-      </li>
-      <li>
-        <a href="{% url 'logout' %}">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Log Out</span>
-        </a>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-      </li>
-      {% else %}
-      <li>
-        <a href="{% url 'about' %}">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">About</span>
-        </a>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-      </li>
-      <li>
-        <a href="{% url 'home' %}">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Home</span>
-        </a>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-      </li>
-      <li>
-        <a href="{% url 'signup' %}">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Sign Up</span>
-        </a>
-          {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-      </li>
-      {% endif %}
+      {%endif%}
+    {%endif%}
+  </header>
+      <div class="sidebar">
+        <div class="logo_content">
+          <div class="logo">
+            <div class="logo_name">Kennel Manager</div>
+          </div>
+          <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_list">
+        {% if user.is_authenticated%}
+          {% if user.type != "OWNER" %}
+            <li>
+              <a href="{% url 'home' %}">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Home</span>
+              </a>
+                {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+            </li>
+            <li>
+              <a href="{% url 'profiles_detail' user.id %}">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Profile</span>
+              </a>
+                {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+            </li>
+            <li>
+              <a href="{% url 'animals_index' %}">
+                <i class="fas fa-paw"></i>
+                <span class="links_name">All Animals</span>
+              </a>
+                {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+            </li>
+            <li>
+              <a href="{% url 'tasks_index' %}">
+                <i class='bx bx-task' ></i>
+                <span class="links_name">All Tasks</span>
+              </a>
+                {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+            </li>
+            <li>
+              <a href="{% url 'about' %}">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">About</span>
+              </a>
+                {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Log Out</span>
+              </a>
+                {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+            </li>
+          {% else %}
+            <li>
+              <a href="{% url 'home' %}">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Home</span>
+              </a>
+                {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+            </li>
+            <li>
+              <a href="{% url 'profiles_detail' user.id %}">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Profile</span>
+              </a>
+                {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+            </li>
+            <li>
+              <a href="{% url 'animals_index'%}">
+                <i class="fas fa-paw"></i>
+                <span class="links_name">My Animals</span>
+              </a>
+                {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Log Out</span>
+              </a>
+                {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+            </li>
+          {%endif%}
+        {%else%}
+          <li>
+            <a href="{% url 'about' %}">
+              <i class='bx bx-grid-alt'></i>
+              <span class="links_name">About</span>
+            </a>
+              {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+          </li>
+          <li>
+            <a href="{% url 'home' %}">
+              <i class='bx bx-grid-alt'></i>
+              <span class="links_name">Home</span>
+            </a>
+              {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+          </li>
+          <li>
+            <a href="{% url 'signup' %}">
+              <i class='bx bx-grid-alt'></i>
+              <span class="links_name">Sign Up</span>
+            </a>
+              {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
+          </li>
+          {% endif %}
     </ul>        
   </div>
   <main class="main">   

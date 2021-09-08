@@ -1,0 +1,22 @@
+.profile-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "header header"
+      "photo info"
+      "desc desc";
+    grid-gap:20px;
+}
+
+.profile-header{
+  grid-area: header;
+}
+
+.profile-img{
+  grid-area: photo;
+}
+
+.profile-desc{
+  grid-area: desc;
+}

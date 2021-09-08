@@ -39,34 +39,8 @@
     </div>
   </div>
   </div>
-  {% if animal.has_owner %}
-    {% for owner in animal.owner_set.all %}
-        <tr>
-        <td>{{owner.f_name}}</td>
-        <td>{{owner.l_name}}</td>
-        <td>{{owner.p_num}}</td>
-        <td>{{owner.get_owner_display}}</td>
-        </tr>
-    {% endfor %}      
-  {% else %}
-  <form
-      action="{% url 'add_owner' animal.id %}" 
-      method="post" 
-      class="subsection-content"
-    >
-        <h4>First Name</h4>
-        <input type="text" name="f_name"><br>
-        <h4>Last Name</h4>
-        <input type="text" name="l_name"><br>
-        <h4>Phone Number</h4>
-        <input type="num" name="p_num"><br>
-        
-      {% csrf_token %}
-      {{ owner_form.as_p }}
-      <button type="submit" class="btn submit">Add Owner</button>
-    </form>
-  {% endif %}
 </section>
+{%if user.type != "OWNER"%}
 <div class="feedings-toy-container">
   <section class="feedings">
     <div class="subsection-title">
@@ -100,6 +74,7 @@
       {{ feeding_form.as_p }}
       <button type="submit" class="btn submit">Add Feeding</button>
     </form>
+    {%endif%}
     <h3>Past Feedings</h3>
     {% if animal.feeding_set.all.count %}
       <table>

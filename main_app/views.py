@@ -2,10 +2,13 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
-from .models import Animal, Employee, Task
+from .models import Animal, Task, NewUser
 from .forms import FeedingForm, TaskForm, CustomUserCreationForm
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
+
+
+
 class Home(LoginView):
   template_name = 'home.html'
 
@@ -16,19 +19,21 @@ def animals_index(request):
     animals = Animal.objects.all()
     return render(request, 'animals/index.html', { 'animals': animals })
 
-def employees_index(request):
-    employees = Employee.objects.all()
-    return render(request, 'employees/index.html', { 'employees': employees })
 
 def animals_detail(request, animal_id):
   animal = Animal.objects.get(id=animal_id)
   feeding_form = FeedingForm()
   return render(request, 'animals/detail.html', { 'animal': animal, 'feeding_form':feeding_form})
 
-def employees_detail(request, employee_id):
-  employee = Employee.objects.get(id=employee_id)
+def user_animal(request, user_id):
+  animal = Animal.objects.filter(user=user_id)
+  return render(request, 'animals/detail.html', {'animal': animal})
+
+def profiles_detail(request, user_id):
+  user = NewUser.objects.get(id=user_id)
   task_form = TaskForm()
-  return render(request, 'employees/detail.html', { 'employee': employee, 'task_form':task_form })
+  return render(request, 'profiles/detail.html', { 'user': user, 'task_form':task_form })
+
 
 def add_feeding(request, animal_id):
     form = FeedingForm(request.POST)
@@ -44,9 +49,14 @@ class SignUpView(CreateView):
     success_url = reverse_lazy('home')
     template_name = 'signup.html'
 
+
 class AnimalCreate(CreateView):
   model = Animal
   fields = ['type', 'breed', 'name', 'description', 'age']
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
 
 class AnimalUpdate(UpdateView):
     model = Animal
@@ -55,18 +65,6 @@ class AnimalUpdate(UpdateView):
 class AnimalDelete(DeleteView):
     model = Animal
     success_url = '/animals/'
-
-class EmployeeCreate(CreateView):
-  model = Employee
-  fields = ['s_date', 'f_name', 'l_name', 'p_num', 'emergency_contact']
-
-class EmployeeUpdate(UpdateView):
-    model = Employee
-    fields = ['f_name', 'l_name', 'p_num,' , 'emergency_contact']
-
-class EmployeeDelete(DeleteView):
-    model = Employee
-    success_url = '/employees/'
 
 class TaskCreate(CreateView):
   model = Task

@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.forms import TextInput, Textarea
-from .models import Animal, Feeding, Task, NewUser
+from .models import Animal, Feeding, Task, NewUser, Manager, Employee, Owner
 
 class UserAdminConfig(UserAdmin):
     model = NewUser
@@ -33,3 +33,6 @@ admin.site.register(Animal)
 admin.site.register(Feeding)
 admin.site.register(Task)
 admin.site.register(NewUser, UserAdminConfig)
+admin.site.register(Manager, UserAdminConfig)
+admin.site.register(Employee, UserAdminConfig)
+admin.site.register(Owner, UserAdminConfig)

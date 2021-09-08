@@ -8,7 +8,8 @@
 
 {% block content %}
   <div class="grid-container">
-{% for animal in animals %}
+{%if user.is_authenticated and user.type != "OWNER"%}
+  {% for animal in animals %}
     <div class="index-container">
       <div class="index-card">
         <div class="img">
@@ -28,6 +29,31 @@
       </div>
     </div>
     {% endfor %}
+    {%else%}
+    {% for animal in animals %}
+    {%if animal.user_id == user.id%}
+    <div class="index-container">
+      <div class="index-card">
+        <div class="img">
+          <a href="{% url 'animals_detail' animal.id %}">
+            <i id="animal" class="fas fa-paw fa-9x"></i>
+          </a>
+        </div>
+        <div class="content">
+            <h2 class="card-title">{{ animal.name }}</h2>
+            {% if animal.age > 0 %}
+                <p>A {{ animal.age }} year old {{ animal.type}}</p>
+            {% else %}
+                <p>A {{ animal.breed }} {{animal.type}}.</p>
+            {% endif %}
+                <p><small>{{ animal.description }}</small></p>
+        </div>
+      </div>
+    </div>
 </div>
+{%endif%}
+{%endfor%}
+{%endif%}
+
 
 {% endblock %}
