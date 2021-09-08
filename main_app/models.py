@@ -51,6 +51,11 @@ class CustomAccountManager(BaseUserManager):
 
 class NewUser(AbstractBaseUser, PermissionsMixin):
 
+    class Types(models.TextChoices):
+        MANAGER = "MANAGER", "Manager"
+        EMPLOYEE = "EMPLOYEE", "Employee"
+        OWNER  = "OWNER", "Owner"
+    type = models.CharField(_('Type'), max_length=50, choices=Types.choices, default=Types.OWNER)
     email = models.EmailField(_('email address'), unique=True)
     user_name = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=150, blank=True)
@@ -58,7 +63,7 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     about = models.TextField(_(
         'about'), max_length=500, blank=True)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     objects = CustomAccountManager()
 
@@ -68,6 +73,31 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.user_name
 
+class ManagerManager(models.Manager):
+    def get_queryset(self, *args, **kwargs):
+        return super().get_queryset(*args, **kwargs).filter(type=NewUser.Types.MANAGER)
+class EmployeeManager(models.Manager):
+    def get_queryset(self, *args, **kwargs):
+        return super().get_queryset(*args, **kwargs).filter(type=NewUser.Types.EMPLOYEE)
+class OwnerManager(models.Manager):
+    def get_queryset(self, *args, **kwargs):
+        return super().get_queryset(*args, **kwargs).filter(type=NewUser.Types.OWNER)
+
+
+class Manager(NewUser):
+    objects = ManagerManager()
+    class Meta:
+        proxy=True
+
+class Employee(NewUser):
+    objects = EmployeeManager()
+    class Meta:
+        proxy=True
+
+class Owner(NewUser):
+    objects=OwnerManager()
+    class Meta:
+        proxy=True
 
 class Animal(models.Model):
     type = models.CharField(max_length=100)
@@ -101,33 +131,6 @@ class Room(models.Model):
     
     def get_absolute_url(self):
         return reverse('room_detail', kwargs={'room_id':self.id})
-    
-
-class Employee(models.Model):
-    s_date = models.DateField('Employment Start')
-    f_name = models.CharField(max_length=50)
-    l_name = models.CharField(max_length=50)
-    p_num = models.IntegerField()
-    emergency_contact = models.TextField(max_length=200)
-
-    def __str__(self):
-        return self.f_name
-    
-    def get_absolute_url(self):
-        return reverse('employees_detail', kwargs={'employee_id':self.id})
-    
-    def has_task(self):
-        return self.task_set.count() >= 1
-
-
-class Owner(models.Model):
-    f_name = models.CharField(max_length=50)
-    l_name = models.CharField(max_length=50)
-    p_num = models.IntegerField()
-    animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"Owner for animal_id: {self.animal_id}"
 
 
 class Feeding(models.Model):

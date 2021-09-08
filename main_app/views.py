@@ -3,7 +3,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from .models import Animal, Employee, Task
-from .forms import FeedingForm, OwnerForm, TaskForm, CustomUserCreationForm
+from .forms import FeedingForm, TaskForm, CustomUserCreationForm
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 class Home(LoginView):
@@ -23,8 +23,7 @@ def employees_index(request):
 def animals_detail(request, animal_id):
   animal = Animal.objects.get(id=animal_id)
   feeding_form = FeedingForm()
-  owner_form = OwnerForm()
-  return render(request, 'animals/detail.html', { 'animal': animal, 'feeding_form':feeding_form, 'owner': owner_form })
+  return render(request, 'animals/detail.html', { 'animal': animal, 'feeding_form':feeding_form})
 
 def employees_detail(request, employee_id):
   employee = Employee.objects.get(id=employee_id)
@@ -39,13 +38,6 @@ def add_feeding(request, animal_id):
         new_feeding.save()
     return redirect('animals_detail', animal_id=animal_id)
 
-def add_owner(request, animal_id):
-    form = OwnerForm(request.POST)
-    if form.is_valid():
-        new_owner = form.save(commit=False)
-        new_owner.animal_id = animal_id
-        new_owner.save()
-    return redirect('animals_detail', animal_id = animal_id)
 
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm

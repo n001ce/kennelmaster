@@ -7,36 +7,50 @@
 {% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-<div class="main-header">
-  <div class="main-header__heading">Hello (User Name)</div>
-  <div class="main-header__updates">Recent Items</div>
-</div>
-<div class="main-overview">
-  <div class="overviewcard">
-    <a href="{% url 'animals_index' %}">
-      <i class="fas fa-paw fa-4x"></i>
-    </a>
-    <h1>Animals<h1>
+{% if user.is_authenticated%}
+  {% if user.type != "OWNER" %}
+  <div class="main-header">
+    <div class="main-header__heading">Hello (User Name)</div>
+    <div class="main-header__updates">Recent Items</div>
   </div>
-  <div class="overviewcard">
-    <a href="{% url 'tasks_index' %}">
-      <i class="fas fa-tasks fa-4x"></i>
-    </a>
-    <h1>Tasks</h1>
+  <div class="main-overview">
+    <div class="overviewcard">
+      <a href="{% url 'animals_index' %}">
+        <i class="fas fa-paw fa-4x"></i>
+      </a>
+      <h1>Animals<h1>
+    </div>
+    <div class="overviewcard">
+      <a href="{% url 'tasks_index' %}">
+        <i class="fas fa-tasks fa-4x"></i>
+      </a>
+      <h1>Tasks</h1>
+    </div>
+    <div class="overviewcard">
+      <a href="">
+        <i class="far fa-address-card fa-4x"></i>
+      </a>
+      <h1>Employees</h1>
+    </div>
   </div>
-  <div class="overviewcard">
-    <a href="{% url 'employees_index' %}">
-      <i class="far fa-address-card fa-4x"></i>
-    </a>
-    <h1>Employees</h1>
+  <div class="main-cards">
+    <div class="card">Requests</div>
+    <div class="card">Completed Tasks</div>
+    <div class="card">Available Employees</div>
   </div>
-</div>
-<div class="main-cards">
-  <div class="card">Requests</div>
-  <div class="card">Completed Tasks</div>
-  <div class="card">Available Employees</div>
-</div>
+  {%else%}
+  <div class="main-header">
+    <div class="main-header__heading">Hello (User Name)</div>
+    <div class="main-header__updates">Recent Items</div>
+  </div>
+  <div class="main-overview">
+    <div class="overviewcard">
+      <a href="{% url 'animals_index' %}">
+        <i class="fas fa-paw fa-4x"></i>
+      </a>
+      <h1>Animals<h1>
+    </div>
+  {%endif%}
 {% else %}
 <div class="form-container">
 <img src="{%static 'css/images/login_gif.gif'%}" alt="">
