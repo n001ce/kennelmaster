@@ -3,6 +3,7 @@
 
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}"/>
 {% endblock %}
 
 {% block content %}
@@ -37,11 +38,14 @@
   <div class="card">Available Employees</div>
 </div>
 {% else %}
+<div class="form-container">
+<img src="{%static 'css/images/login_gif.gif'%}" alt="">
 <h2>Log In</h2>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Log In</button>
+  <button id="btn_form" type="submit">Log In</button>
 </form>
+</div>
 {%endif%}
 {% endblock %}

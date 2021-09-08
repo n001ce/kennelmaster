@@ -1,39 +1,51 @@
 .form-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
+  position:fixed;
+  top: 30%;
+  left: 50%;
+  width:30em;
+  height:30em;
+  margin-top: -9em; /*set to a negative number 1/2 of your height*/
+  margin-left: -15em; /*set to a negative number 1/2 of your width*/
+}
+
+.form-container img{
+  background-image: url("images/paw.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
   
-  table {
-    padding: 0 40px;
-    width: 100%;
-    border-spacing: 0 20px;
-  }
+h2{
+  text-align: center;
+}
+
+.form-container p{
+  padding-top: 30px;
+  padding-left: 20px;
+}
+.form-container input{
+  margin-left: 30px;
+}
+
+#id_password{
+  margin-left: 65px;
+
+}
+#btn_form{
+  margin-right: 60%;
+  margin-left: 40%;
+  width: 100px;
+  margin-top: 20px;
+}
+
+@media only screen and (min-width: 46.875em) {
+  /* Show the sidenav */
+      .form-container {
+          position:relative;
+      }
   
-  th {
-    text-align: left;
-    padding: 6px 20px 0 0;
-    font-weight: normal;
-    vertical-align: top;
-    font-size: var(--font-reg);
-  }
-  
-  td {
-    max-width: 60%;
-  }
-  
-  td > * {
-    width: 100%;
-    padding: 2px 4px;
-    font-size: var(--font-l);
-  }
-  
-  td > textarea {
-    height: calc(4 * var(--font-l) + 8px);
-    font-family: inherit;
-  }
-  
-  .btn {
-    align-self: flex-end;
-    margin-right: 40px;
   }

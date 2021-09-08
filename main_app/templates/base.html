@@ -21,8 +21,14 @@
 </head>
 <body>
   <header class="header">
-    <div class="header__search">Kennel Master</div>
-    <div class="header__avatar">Logo</div>
+    <div class="header__avatar">
+    <img src="{%static 'css/images/logo.png'%}" alt="">
+    Kennel Manager
+    </div>
+    <div class="topnav-right">
+      <a href={% url 'animals_create' %}>Create Animal</a>
+      <a href={% url 'tasks_create' %}>Create Task</a>
+    </div>
   </header>
   <div class="sidebar">
     <div class="logo_content">
