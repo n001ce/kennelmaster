@@ -55,7 +55,7 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
         MANAGER = "MANAGER", "Manager"
         EMPLOYEE = "EMPLOYEE", "Employee"
         OWNER  = "OWNER", "Owner"
-    type = models.CharField(_('Type'), max_length=50, choices=Types.choices, unique=True)
+    type = models.CharField(_('Type'), max_length=50, choices=Types.choices, default=Types.EMPLOYEE)
     email = models.EmailField(_('email address'), unique=True)
     user_name = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=150, blank=True)
@@ -100,7 +100,13 @@ class Owner(NewUser):
         proxy=True
 
 class Animal(models.Model):
-    type = models.CharField(max_length=100)
+
+    class Types(models.TextChoices):
+        DOG = "DOG", "Dog"
+        CAT = "CAT", "Cat"
+        REPTILE  = "REPTILE", "Reptile"
+        BIRD = "BIRD", "Bird"
+    type = models.CharField(_('Type'), max_length=50, choices=Types.choices, default=Types.DOG)
     breed = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
@@ -163,3 +169,10 @@ class Task(models.Model):
         
     def get_absolute_url(self):
         return reverse("tasks_detail", kwargs={"pk": self.id})
+
+class Photo(models.Model):
+    url = models.CharField(max_length=250)
+    animal = models.OneToOneField(Animal, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for {self.id}: {self.id} @{self.url}"

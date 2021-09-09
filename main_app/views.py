@@ -2,15 +2,24 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
-from .models import Animal, Task, NewUser
+from .models import Animal, Task, NewUser, Employee, Photo
 from .forms import FeedingForm, TaskForm, CustomUserCreationForm
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
+import uuid
+import boto3
 
+S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
+BUCKET = 'kennel-manager'
 
+class Login(LoginView):
+  template_name = 'login.html'
 
-class Home(LoginView):
-  template_name = 'home.html'
+def home(request):
+  tasks = Task.objects.all()
+  animals = Animal.objects.all()
+  employees = Employee.objects.all()
+  return render(request, 'home.html', {'tasks':tasks, 'employees':employees, 'animals':animals})
 
 def about(request):
     return render(request, 'about.html')
@@ -26,22 +35,23 @@ def animals_detail(request, animal_id):
   return render(request, 'animals/detail.html', { 'animal': animal, 'feeding_form':feeding_form})
 
 def user_animal(request, user_id):
-  animal = Animal.objects.filter(user=user_id)
+  animal = Animal.objects.filter(user_id=user_id)
   return render(request, 'animals/detail.html', {'animal': animal})
 
 def profiles_detail(request, user_id):
   user = NewUser.objects.get(id=user_id)
-  task_form = TaskForm()
-  return render(request, 'profiles/detail.html', { 'user': user, 'task_form':task_form })
+  tasks = Task.objects.filter(employee_id = user_id)
+  return render(request, 'profiles/detail.html', { 'user': user, 'tasks':tasks })
 
 
 def add_feeding(request, animal_id):
-    form = FeedingForm(request.POST)
-    if form.is_valid():
-        new_feeding = form.save(commit=False)
-        new_feeding.animal_id = animal_id
-        new_feeding.save()
-    return redirect('animals_detail', animal_id=animal_id)
+  form = FeedingForm(request.POST)
+  if form.is_valid():
+      new_feeding = form.save(commit=False)
+      new_feeding.animal_id = animal_id
+      new_feeding.save()
+  return redirect('animals_detail', animal_id=animal_id)
+
 
 
 class SignUpView(CreateView):
@@ -84,6 +94,20 @@ class TaskDelete(DeleteView):
   model = Task
   success_url = '/tasks/'
 
-def assoc_task(request, employee_id, task_id):
-  Employee.objects.get(id=employee_id).Tasks.add(task_id)
-  return redirect('employees_detail', employee_id=employee_id)
+def add_photo(request, animal_id):
+  photo_file = request.FILES.get('photo-file', None)
+  if photo_file:
+    s3 = boto3.client('s3')
+    key = uuid.uuid4().hex + photo_file.name[photo_file.name.rfind('.'):]
+    try:
+      s3.upload_fileobj(photo_file, BUCKET, key)
+      url = f"{S3_BASE_URL}{BUCKET}/{key}"
+      photo = Photo(url=url, animal_id=animal_id)
+      animal_photo = Photo.objects.filter(animal_id=animal_id)
+      if animal_photo.first():
+        animal_photo.first().delete()
+      photo.save()
+    except Exception as err:
+      print('An error occurred uploading file to S3: %s' % err)
+  return redirect('animals_detail', animal_id=animal_id)
+

@@ -44,11 +44,12 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: #82bef6;
+    background-color: #7e909ab6;
     margin-bottom: 20px;
     -webkit-column-break-inside: avoid;
     padding: 24px;
     box-sizing: border-box;
+    border-radius: 30px;
 }
 
 .card:first-child {
@@ -56,19 +57,75 @@ height: 485px;
 }
 
 .card:nth-child(2) {
-height: 200px;
+height: 265px;
 margin-right: 10px;
 width: 90%;
 }
 
 .card:nth-child(3) {
-height: 265px;
+height: 200px;
 width: 90%;
 }
 
+.table-card{
+    margin-top: 20px;
+    background-color:aquamarine;
+    width: 100%;
+    height: 80%;
+    text-align:center;
+}
 
+.table-card table{
+    column-gap: 4px;
+    background-color: white;
+    margin-top: 20px;
+    width: 100%;
+    border-spacing: 5px;
+}
+
+.table-card table th{
+    width: 10%;
+}
+
+.table-card table td{
+    background-color: green;
+}
+
+.animal-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "animal animal animal animal";
+    grid-gap:20px;
+    height: 100%;
+    width: 100%;
+}
 /* Non-mobile styles, 750px breakpoint */
+.animal-card{
+    background-color: blue;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr .5fr;
+    grid-template-areas: 
+        "img"
+        "info";
+    
+}
 
+.animal-card-info{
+    grid-area: info;
+    background-color: green;
+}
+
+.animal-card-img{
+    margin-top:10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-radius: 90px;
+    height: 75%;
+    
+}
 
 /* Medium-sized screen breakpoint (tablet, 1050px) */
 @media only screen and (min-width: 65.625em) {

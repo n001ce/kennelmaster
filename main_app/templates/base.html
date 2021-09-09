@@ -27,7 +27,7 @@
     </div>
     {% if user.is_authenticated%}
       {% if user.type != "OWNER" %}
-      <div class="topnav-right">
+      <div class="topnav_right">
         <a href={% url 'animals_create' %}>Create Animal</a>
         <a href={% url 'tasks_create' %}>Create Task</a>
       </div>

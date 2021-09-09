@@ -10,7 +10,7 @@
 {% if user.is_authenticated%}
   {% if user.type != "OWNER" %}
   <div class="main-header">
-    <div class="main-header__heading">Hello (User Name)</div>
+    <div class="main-header__heading"><h1>Hello {{user.user_name}} </h1></div>
     <div class="main-header__updates">Recent Items</div>
   </div>
   <div class="main-overview">
@@ -34,9 +34,72 @@
     </div>
   </div>
   <div class="main-cards">
-    <div class="card">Requests</div>
-    <div class="card">Completed Tasks</div>
-    <div class="card">Available Employees</div>
+    <div class="card">
+    <h2>Tasks</h2>
+    <div class="table-card">
+    <table>
+      <th>Type</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Employee</th>
+    {% for task in tasks %}
+      <tr>
+        <td>
+          {%if task.type == 'K'%}
+              <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/external-vitaliy-gorbachev-blue-vitaly-gorbachev/50/000000/external-cleaning-labour-day-vitaliy-gorbachev-blue-vitaly-gorbachev.png"/></a>
+            {%endif%}
+            {%if task.type == 'G'%}
+              <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/doodle/48/000000/dog-bone--v1.png"/></a>
+            {%endif%}
+            {%if task.type == 'M'%}
+              <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/ios/50/000000/hand-with-a-pill.png"/></a>
+            {%endif%}
+            {%if task.type == 'F'%}
+              <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/ios/50/000000/hand-with-a-pill.png"/></a>
+            {%endif%}   
+        </td>
+        <td>{{task.start_time}}</td>
+        <td>{{task.end_time}}</td>
+        <td><a href="{%url 'profiles_detail' task.employee.id %}">{{task.employee}}</a></td>
+      </tr>
+    {% endfor %}
+    </table>
+    </div>
+    </div>
+    <div class="card">
+    <h3>Current Animals</h3>
+    <div class="animal-container">
+    {% for animal in animals %}
+    <div class="animal-card">
+      <div class="animal-card-img">
+        {%if animal.type == 'DOG'%}
+              <a href="{%url 'animals_detail' animal.id %}"><img src="https://img.icons8.com/fluency/96/000000/dog.png"/></a>
+            {%endif%}
+            {%if animal.type == 'CAT'%}
+              <a href="{%url 'animals_detail' animal.id %}"><img src="https://img.icons8.com/emoji/96/000000/cat-emoji.png"/></a>
+            {%endif%}
+            {%if animal.type == 'REPTILE'%}
+              <a href="{%url 'animals_detail' animal.id%}"><img src="https://img.icons8.com/emoji/96/000000/snake-emoji.png"/></a>
+            {%endif%}
+            {%if animal.type == 'BIRD'%}
+              <a href="{%url 'animals_detail' animal.id%}"><img src="https://img.icons8.com/color/96/000000/bird.png"/></a>
+            {%endif%} 
+      </div>
+      <div class="animal-card-info">
+        <h4>{{animal.name}}</h4>
+        <h6>{{animal.breed}}</h6>
+      </div>
+    </div>
+    {%endfor%}
+    </div>
+    </div>
+    <div class="card">
+    {% for employee in employees %}
+      <a href="{% url 'profiles_detail' employee.id %}">
+        <h2 class="card-title">{{employee.first_name}}</h2>
+      </a>
+  {% endfor %}
+    </div>
   </div>
   {%else%}
   <div class="main-header">
@@ -51,15 +114,5 @@
       <h1>Animals<h1>
     </div>
   {%endif%}
-{% else %}
-<div class="form-container">
-<img src="{%static 'css/images/login_gif.gif'%}" alt="">
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button id="btn_form" type="submit">Log In</button>
-</form>
-</div>
-{%endif%}
+  {%endif%}
 {% endblock %}

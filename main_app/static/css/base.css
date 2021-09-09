@@ -22,7 +22,7 @@ body{
     left: 0;
     height: 100%;
     width: 78px;
-    background: blue;
+    background: #202020;
     padding: 6px 25px;
     transition: all 0.5s ease;
 }
@@ -62,7 +62,7 @@ body{
 
 .sidebar #btn{
     position: absolute;
-    color: #fff;
+    color: rgb(255, 255, 255);
     left: 50%;
     top: 6px;
     font-size: 20px;
@@ -127,27 +127,28 @@ body{
 
 .header {
     grid-area: header;
-    background-color: #648ca6;
+    background-color: #23282D;
 }
 
 .main {
     grid-area: main;
-    background-color: #8fd4d9;
+    background-color: #F1F1F1;
 }
 
 .footer {
     grid-area: footer;
-    background-color: #648ca6;
+    background-color: #23282D;
 }
 
 .topnav_right{
     float: right;
+    color: white;  
 }
 
 /* Style the links inside the navigation bar */
 .topnav_right a {
   float: right;
-  color: #f2f2f2;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -157,12 +158,11 @@ body{
 /* Change the color of links on hover */
 .topnav_right a:hover {
   background-color: #ddd;
-  color: black;
+  color: white;
 }
 
 /* Add a color to the active/current link */
 .topnav_right a.active {
-  background-color: #04AA6D;
   color: white;
 }
 
@@ -172,11 +172,12 @@ body{
     align-items: center;
     justify-content: space-between;
     padding: 0 16px;
-    background-color: #648ca6;
+    background-color: #23282D;
 }
 
 .header__avatar{
     text-align: start;
+    color: white;
 }
 
 

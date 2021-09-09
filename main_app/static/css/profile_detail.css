@@ -1,12 +1,20 @@
-.profile-container {
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#profile-container {
+  padding: 50px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: .25fr 1fr;
+    grid-template-rows: 20% 30% 50%;
     grid-template-areas:
       "header header"
       "photo info"
       "desc desc";
     grid-gap:20px;
+    height: 100vh;
 }
 
 .profile-header{
@@ -17,6 +25,53 @@
   grid-area: photo;
 }
 
+.profile-info{
+  grid-area: info;
+  display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+    "type f_name u_name"
+    "s_date email isactive ";
+    grid-gap:20px;
+}
+
 .profile-desc{
   grid-area: desc;
+}
+
+.profile-type{
+  grid-area:type;
+  height: 100%;
+  background-color: red;
+}
+.profile-fname{
+  grid-area: f_name;
+  height: 100%;
+  background-color: blue;
+
+}
+.profile-uname{
+  grid-area: u_name;
+  height: 100%;
+  background-color: yellow;
+
+}
+.profile-sdate{
+  grid-area: s_date;
+  height: 100%;
+  background-color: orange;
+
+}
+.profile-email{
+  grid-area: email;
+  height: 100%;
+  background-color: green;
+
+}
+.profile-active{
+  grid-area: isactive;
+  height: 100%;
+  background-color: pink;
+
 }
