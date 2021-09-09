@@ -25,14 +25,6 @@
     <img src="{%static 'css/images/logo.png'%}" alt="">
     Kennel Manager
     </div>
-    {% if user.is_authenticated%}
-      {% if user.type != "OWNER" %}
-      <div class="topnav_right">
-        <a href={% url 'animals_create' %}>Create Animal</a>
-        <a href={% url 'tasks_create' %}>Create Task</a>
-      </div>
-      {%endif%}
-    {%endif%}
   </header>
       <div class="sidebar">
         <div class="logo_content">

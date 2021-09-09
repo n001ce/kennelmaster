@@ -122,7 +122,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = '/accounts/home'
+SIGNUP_REDIRECT_URL='/accounts/home'
 LOGOUT_REDIRECT_URL = '/'
 AUTH_USER_MODEL = 'main_app.NewUser'
 # Default primary key field type

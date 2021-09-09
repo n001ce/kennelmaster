@@ -28,6 +28,10 @@ def animals_index(request):
     animals = Animal.objects.all()
     return render(request, 'animals/index.html', { 'animals': animals })
 
+def profiles_index(request):
+    profiles = NewUser.objects.all()
+    return render(request, 'profiles/index.html', { 'profiles': profiles })
+
 
 def animals_detail(request, animal_id):
   animal = Animal.objects.get(id=animal_id)
@@ -88,7 +92,7 @@ class TaskDetail(DetailView):
 
 class TaskUpdate(UpdateView):
   model = Task
-  fields = ['start_time', 'end_time', 'type','description']
+  fields = ['start_time', 'end_time', 'type','description', 'is_complete']
 
 class TaskDelete(DeleteView):
   model = Task

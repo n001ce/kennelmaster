@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  #task-container{
+    background-color: white;
+    padding: 130px;
+    display: grid;
+    grid-template-columns: .5fr 1fr;
+    grid-template-areas:
+        "image task";
+    grid-gap:20px;
+    height: 100%;
+    width: 100%;
+}
+/* Non-mobile styles, 750px breakpoint */
+
+.task-img{
+    grid-area: image;
+    height: 100%;
+    width: 100%;
+}
+
+.task-img img{
+    height: 300px;
+    width: auto;
+}
+
+.task-card{
+    grid-area:task;
+    display: grid;
+    grid-template-columns: .25fr .75fr;
+    grid-template-rows: .25fr .25fr .25fr .25fr;
+    grid-template-areas:
+        "start_t s_data"
+        "end_t e_data"
+        "employee em_data"
+        "description d_data";
+    grid-gap:10px;
+    height: 100%;
+    width: 100%;
+
+}
+
+.start{
+    text-align: center;
+    grid-area: start_t;
+    background-color:blanchedalmond;
+    width: 100%;
+}
+
+.end{
+    text-align: center;
+    grid-area: end_t;
+    background-color:burlywood;
+    width: 100%;
+}
+
+.description{
+    text-align:center;
+    grid-area: description;
+    background-color:cadetblue;
+    width: 100%;
+}
+
+.employee{
+    text-align:center;
+    grid-area: employee;
+    background-color:chartreuse;
+    width:100%;
+}
+
+.s_data{
+    background-color: lightblue;
+    grid-area: s_data;
+}
+
+.e_data{
+    background-color: lightblue;
+    grid-area: e_data;
+}
+
+.em_data{
+    background-color: lightblue;
+    grid-area: em_data;
+}
+
+.d_data{
+    background-color: lightblue;
+    grid-area: d_data;
+}

@@ -2,23 +2,63 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/task_detail.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
 <script defer src="{% static 'js/animal-detail.js' %}"></script>
 {% endblock %}
 
 {% block content %}
   
-<div class="card" style="">
-  <div class="card-bg" style=""></div>
-  <div class="card-content">
-    <h3>{{task.start_time}}</h2>
-    <h2>{{ task.type }}</h2>
-    <h2>{{ task.description }}</h2>
-    <h2>{{task.employee}}</h2>
+<div id="task-container" >
+  <div class="task-img" style="">
+    {%if task.type == 'K'%}
+      <h2>Kennel Cleaning</h2>
+      <img src="{%static '/css/images/cleaning.png'%}" alt="">
+    {%endif%}
+    {%if task.type == 'G'%}
+      <h2>Group Play</h2>
+      <img src="{%static '/css/images/group.png'%}" alt="">
+    {%endif%}
+    {%if task.type == 'M'%}
+      <h2>Medications</h2>
+      <img src="{%static '/css/images/meds.png'%}" alt="">
+    {%endif%}
+    {%if task.type == 'F'%}
+      <h2>Feeding</h2>
+      <img src="{%static '/css/images/feeding.png'%}" alt="">
+    {%endif%} 
+  </div>
+  <div class="task-card">
+    <div class="start">
+      <img src="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-clock-user-interface-flatart-icons-lineal-color-flatarticons.png"/>   Start Time: 
+    </div>
+    <div class="s_data">
+      <h1>{{task.start_time}}</h1>
+    </div>
+    <div class="end">
+      <img src="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-clock-user-interface-flatart-icons-lineal-color-flatarticons.png"/> End Time:
+    </div>
+    <div class="e_data">
+      <h1>{{task.end_time}}</h1>
+    </div>
+    <div class="employee">
+      <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-employee-business-and-education-flatart-icons-outline-flatarticons.png"/>Employee:
+    </div>
+    <div class="em_data">
+      <h1>{{task.employee.first_name}}</h1>
+    </div>
+    <div class="description">
+      <img src="https://img.icons8.com/material-outlined/96/000000/create-new.png"/> Description:
+    </div>
+    <div class="d_data">
+      <h1>{{task.description}}</h1>
+    </div>
+  </div>
+  <div class="task-info">
+    <a href="{% url 'tasks_update' task.id %}" class="btn warn">Edit</a>
+    <a href="{% url 'tasks_delete' task.id %}" class="btn danger">Delete</a>  
+  </div>
   </div>
 </div>
-<a href="{% url 'tasks_update' task.id %}" class="btn warn">Edit</a>
-<a href="{% url 'tasks_delete' task.id %}" class="btn danger">Delete</a>
 
 {% endblock %}

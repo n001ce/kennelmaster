@@ -15,22 +15,22 @@
   </div>
   <div class="main-overview">
     <div class="overviewcard">
-      <a href="{% url 'animals_index' %}">
+      <a href="{% url 'animals_create' %}">
         <i class="fas fa-paw fa-4x"></i>
       </a>
-      <h1>Animals<h1>
+      <h1>Add Animals<h1>
     </div>
     <div class="overviewcard">
-      <a href="{% url 'tasks_index' %}">
+      <a href="{% url 'tasks_create' %}">
         <i class="fas fa-tasks fa-4x"></i>
       </a>
-      <h1>Tasks</h1>
+      <h1>Create A Task</h1>
     </div>
     <div class="overviewcard">
-      <a href="">
+      <a href="{%url 'profiles_index'%}">
         <i class="far fa-address-card fa-4x"></i>
       </a>
-      <h1>Employees</h1>
+      <h1>View Users</h1>
     </div>
   </div>
   <div class="main-cards">
@@ -43,7 +43,31 @@
       <th>End</th>
       <th>Employee</th>
     {% for task in tasks %}
+    {%if task.is_complete == False%}
+    {% if user.type == "EMPLOYEE" %}
+    {% if task.user_id == user_id %}
       <tr>
+        <td>
+          {%if task.type == 'K'%}
+              <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/external-vitaliy-gorbachev-blue-vitaly-gorbachev/50/000000/external-cleaning-labour-day-vitaliy-gorbachev-blue-vitaly-gorbachev.png"/></a>
+            {%endif%}
+            {%if task.type == 'G'%}
+              <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/doodle/48/000000/dog-bone--v1.png"/></a>
+            {%endif%}
+            {%if task.type == 'M'%}
+              <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/ios/50/000000/hand-with-a-pill.png"/></a>
+            {%endif%}
+            {%if task.type == 'F'%}
+              <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/color/48/000000/dog-bowl.png"/></a>
+            {%endif%}   
+        </td>
+        <td>{{task.start_time}}</td>
+        <td>{{task.end_time}}</td>
+        <td><a href="{%url 'profiles_detail' task.employee.id %}">{{task.employee.first_name}}</a></td>
+      </tr>
+      {%endif%}
+    {%elif user.type == "MANAGER" %}
+    <tr>
         <td>
           {%if task.type == 'K'%}
               <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/external-vitaliy-gorbachev-blue-vitaly-gorbachev/50/000000/external-cleaning-labour-day-vitaliy-gorbachev-blue-vitaly-gorbachev.png"/></a>
@@ -60,8 +84,10 @@
         </td>
         <td>{{task.start_time}}</td>
         <td>{{task.end_time}}</td>
-        <td><a href="{%url 'profiles_detail' task.employee.id %}">{{task.employee}}</a></td>
+        <td><a href="{%url 'profiles_detail' task.employee.id %}">{{task.employee.first_name}}</a></td>
       </tr>
+      {%endif%}
+      {%endif%}
     {% endfor %}
     </table>
     </div>
@@ -93,13 +119,7 @@
     {%endfor%}
     </div>
     </div>
-    <div class="card">
-    {% for employee in employees %}
-      <a href="{% url 'profiles_detail' employee.id %}">
-        <h2 class="card-title">{{employee.first_name}}</h2>
-      </a>
-  {% endfor %}
-    </div>
+    
   </div>
   {%else%}
   <div class="main-header">

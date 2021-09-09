@@ -58,7 +58,7 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     type = models.CharField(_('Type'), max_length=50, choices=Types.choices, default=Types.EMPLOYEE)
     email = models.EmailField(_('email address'), unique=True)
     user_name = models.CharField(max_length=150, unique=True)
-    first_name = models.CharField(max_length=150, blank=True)
+    first_name = models.CharField(max_length=150)
     start_date = models.DateTimeField(default=timezone.now)
     about = models.TextField(_(
         'about'), max_length=500, blank=True)
@@ -162,6 +162,7 @@ class Task(models.Model):
         default=TASKS[0][0]
     )
     description = models.TextField(max_length=250)
+    is_complete = models.BooleanField()
     employee = models.ForeignKey(Employee, on_delete = models.CASCADE)
 
     def __str__(self):

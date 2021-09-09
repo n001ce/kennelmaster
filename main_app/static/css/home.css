@@ -50,6 +50,8 @@
     padding: 24px;
     box-sizing: border-box;
     border-radius: 30px;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: scroll; /* Add vertical scrollbar */
 }
 
 .card:first-child {
@@ -57,7 +59,7 @@ height: 485px;
 }
 
 .card:nth-child(2) {
-height: 265px;
+height: 485px;
 margin-right: 10px;
 width: 90%;
 }
@@ -94,6 +96,7 @@ width: 90%;
 .animal-container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas:
         "animal animal animal animal";
     grid-gap:20px;

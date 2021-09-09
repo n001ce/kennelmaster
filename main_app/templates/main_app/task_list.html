@@ -2,30 +2,40 @@
 {% load static %} 
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/task_list.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
 {% endblock %}
 
 {% block content %}
 
-<div class="main-header">
-  <div class="main-header__heading">Hello (User Name)</div>
-  <div class="main-header__updates">Recent Items</div>
-</div>
-<div class="grid-container">
+<div class="task-container">
   {% for task in task_list %}
-    <div class="index-card">
-        <div class="img">
+      <div class="task-card">
+        <div class="task-card-img">
           <a href="{% url 'tasks_detail' task.id %}">
-            <i class='bx bx-task fa-9x' ></i>
+          {%if task.type == 'K'%}
+              <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/external-vitaliy-gorbachev-blue-vitaly-gorbachev/50/000000/external-cleaning-labour-day-vitaliy-gorbachev-blue-vitaly-gorbachev.png"/></a>
+            {%endif%}
+            {%if task.type == 'G'%}
+              <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/doodle/50/000000/dog-bone--v1.png"/></a>
+            {%endif%}
+            {%if task.type == 'M'%}
+              <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/ios/50/000000/hand-with-a-pill.png"/></a>
+            {%endif%}
+            {%if task.type == 'F'%}
+              <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/ios/50/000000/hand-with-a-pill.png"/></a>
+            {%endif%}  
           </a>
         </div>
-        <div class="content">
-          <h2 class="card-title">{{ task.type }} {{task.employee}}</h2>
+        <div class="task-card-user">
+            <h2 class="card-title">{{ task.employee.first_name}}</h2>
+            <p>{{task.start_time}}</p>
+            <p>{{task.end_time}}</p>
         </div>
-    </div>
-  {% endfor %}
-</section>
+        <div class="task-card-info">
+          <h2 class="completed">{{task.is_complete}}</h2>
+        </div>
+      </div>
+{%endfor%}
 </div>
-
 {% endblock %}

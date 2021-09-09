@@ -1,0 +1,37 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/profiles_index.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<div class="profile-container">
+  {% for profile in profiles %}
+      <div class="profile-card">
+        <div class="profile-card-img">
+          <a href="{% url 'profiles_detail' profile.id %}">
+          {%if profile.type == 'MANAGER'%}
+              <a href="{%url 'profiles_detail' profile.id %}"><img src="https://img.icons8.com/external-vitaliy-gorbachev-blue-vitaly-gorbachev/50/000000/external-cleaning-labour-day-vitaliy-gorbachev-blue-vitaly-gorbachev.png"/></a>
+            {%endif%}
+            {%if profile.type == 'EMPLOYEE'%}
+              <a href="{%url 'profiles_detail' profile.id %}"><img src="https://img.icons8.com/doodle/50/000000/dog-bone--v1.png"/></a>
+            {%endif%}
+            {%if profile.type == 'OWNER'%}
+              <a href="{%url 'profiles_detail' profile.id %}"><img src="https://img.icons8.com/ios/50/000000/hand-with-a-pill.png"/></a>
+            {%endif%} 
+          </a>
+        </div>
+        <div class="profile-card-user">
+            <h2 class="card-title">{{ profile.first_name}}</h2>
+            <p>{{profile.email}}</p>
+        </div>
+        <div class="profile-card-info">
+          <p>{{profile.start_date}}</p>
+        </div>
+      </div>
+{%endfor%}
+</div>
+{% endblock %}
