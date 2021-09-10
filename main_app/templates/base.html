@@ -86,13 +86,7 @@
               </a>
                 {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
             </li>
-            <li>
-              <a href="{% url 'profiles_detail' user.id %}">
-                <i class='bx bx-grid-alt'></i>
-                <span class="links_name">Profile</span>
-              </a>
-                {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
-            </li>
+            
             <li>
               <a href="{% url 'animals_index'%}">
                 <i class="fas fa-paw"></i>
@@ -117,9 +111,9 @@
               {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
           </li>
           <li>
-            <a href="{% url 'home' %}">
+            <a href="{% url 'login' %}">
               <i class='bx bx-grid-alt'></i>
-              <span class="links_name">Home</span>
+              <span class="links_name">Login</span>
             </a>
               {% comment %} <span class="tooltip">Dashboard</span> {% endcomment %}
           </li>

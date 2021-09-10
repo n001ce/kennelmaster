@@ -35,6 +35,7 @@
         "feeding feeding feeding";
         height: 100%;
         width: 100%;
+        grid-gap: 4px;
     }
     /* Non-mobile styles, 750px breakpoint */
     .feeding-container{
@@ -54,14 +55,14 @@
     
     .animal-img{
         grid-area: image;
-        height: 300px;
+        height: auto;
         width: auto;
         background-color:#ffffff8c;
     }
     
     .animal-img img{
-    height: 300px;
-    width: auto;
+    width: 300px;
+    height: auto;
 }
 
 #animal-card{
