@@ -3,7 +3,7 @@
 2. [Visit website](https://kennelmanager.herokuapp.com/login/)
    
 
-![website](../kennelmaster/main_app/static/css/images/kennel_manager.PNG)
+![website](https://imgur.com/M4M2M1G)
 ### From the mind of a former kennel employee, comes an application that simplifies the annotation process of daily tasks performed at animal care facilities.
 
 # **Description**
@@ -25,20 +25,20 @@ _Owner_ accounts currently only give the user access to create, read, update, an
 # **How To Use**
 
 Step 1: Load Website and Login (continue) or
-![login](../kennelmaster/main_app/static/css/images/login.PNG)
+![login](https://imgur.com/PdKacle)
 
 
 Step 1a: Signup by going to the side nav bar and selecting signup
-![navbar](../kennelmaster/main_app/static/css/images/navbar.PNG)
+![navbar](https://imgur.com/x74pk8D)
 
 Step 1b: Fill out the signup form
 ![signup](../kennelmaster/main_app/static/css/images/signup1.PNG)
 Return to step 1
 
 Once logged in you can utilize the dashboard to track current tasks, animals in the kennel, create animals, create tasks, view users, and update your name and email. 
-![website](../kennelmaster/main_app/static/css/images/navbar2.PNG)
-![website](../kennelmaster/main_app/static/css/images/employee_index.PNG)
-![website](../kennelmaster/main_app/static/css/images/animal_index.PNG)
+![website](https://imgur.com/M4M2M1G)
+![website](https://imgur.com/rqVgDMZ)
+![website](https://imgur.com/vk6wAuP)
 ![website](../kennelmaster/main_app/static/css/images/animal_details.PNG)
 ![website](../kennelmaster/main_app/static/css/images/task_details.PNG)
 When you click on the animal card you will be sent to that animals details page. From there you can edit the animals information, upload a photo, or delete the animal (Managers and Owners only).
