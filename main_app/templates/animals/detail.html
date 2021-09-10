@@ -25,11 +25,19 @@
         alt="A photo of {{animal.name}}"
         class="usr-img"
       >
-       {% else %}
-      <img 
-        src="{% static 'images/sk8r-boi-cat.svg' %}" 
-        alt="A skater boy cat"
-      >
+      {% else %}
+      {%if animal.type == 'DOG'%}
+        <img src="https://img.icons8.com/fluency/96/000000/dog.png"/>
+      {%endif%}
+      {%if animal.type == 'CAT'%}
+        <img src="https://img.icons8.com/emoji/96/000000/cat-emoji.png"/>
+      {%endif%}
+      {%if animal.type == 'REPTILE'%}
+        <img src="https://img.icons8.com/emoji/96/000000/snake-emoji.png"/>
+      {%endif%}
+      {%if animal.type == 'BIRD'%}
+        <img src="https://img.icons8.com/color/96/000000/bird.png"/>
+      {%endif%}
     {%endif%}
   </div>
   <div class="animal-info">
@@ -48,7 +56,9 @@
       <button type="submit" class="btn submit">Upload Photo</button>
     </form>
     <a href="{% url 'animals_update' animal.id %}" class="btn warn">Edit</a>
-    <a href="{% url 'animals_delete' animal.id %}" class="btn danger">Delete</a>  
+    {%if animal.user.id == user.id or user.type == 'MANAGER'%}
+      <a href="{% url 'animals_delete' animal.id %}" class="btn danger">Delete</a>
+    {%endif%}  
   </div>
   <div id="animal-card">
     <div class="breed">
