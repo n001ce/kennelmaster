@@ -80,6 +80,14 @@ class AnimalDelete(DeleteView):
     model = Animal
     success_url = '/animals/'
 
+class NewUserUpdate(UpdateView):
+  model = NewUser
+  fields = ['first_name', 'email']
+
+class NewUserDelete(DeleteView):
+  model = NewUser
+  success_url = '/home'
+
 class TaskCreate(CreateView):
   model = Task
   fields = '__all__'

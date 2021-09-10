@@ -3,6 +3,7 @@
 
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
 <script defer src="{% static 'js/animal-detail.js' %}"></script>
 
 {% endblock %}
@@ -10,11 +11,7 @@
 {% block content %}
 
 <div class='page-header'>
-{% if object %}
   <h1>Edit {{ object.name }}</h1>
-{% else %}
-  <h1>Add an Employee</h1>
-{% endif %}
   <img src="" alt=""/>
 </div>
 

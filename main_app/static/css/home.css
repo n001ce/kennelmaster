@@ -26,17 +26,35 @@
 
 .overviewcard {
     display: flex;
-    align-items: center;
+    text-align: center;
     justify-content: space-between;
     padding: 20px;
-    background-color: #d3d3;
-}
+    background-color: rgba(240, 75, 240, 0.651);
+    border-radius: 90px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;}
 
+.overviewcard h1{
+    margin-right: auto;
+    margin-left: auto;
+}
 .main-cards {
     column-count: 2;
     column-gap: 20px;
     margin: 20px;
 }
+
+.card::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  .card::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  .card::-webkit-scrollbar-thumb {
+    background-color: #11171a;
+    border-radius: 10px;
+  }
 
 .card {
     margin-left: 80px;
@@ -49,10 +67,9 @@
     -webkit-column-break-inside: avoid;
     padding: 24px;
     box-sizing: border-box;
-    border-radius: 30px;
     overflow-x: hidden; /* Hide horizontal scrollbar */
-    overflow-y: scroll; /* Add vertical scrollbar */
-}
+    overflow-y: scroll; 
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;}
 
 .card:first-child {
 height: 485px;
@@ -71,7 +88,6 @@ width: 90%;
 
 .table-card{
     margin-top: 20px;
-    background-color:aquamarine;
     width: 100%;
     height: 80%;
     text-align:center;
@@ -89,9 +105,10 @@ width: 90%;
     width: 10%;
 }
 
-.table-card table td{
-    background-color: green;
-}
+.table-card tbody tr:nth-child(odd){
+    background-color: #4C8BF5;
+    color: #fff;
+  }
 
 .animal-container{
     display: grid;
@@ -105,7 +122,8 @@ width: 90%;
 }
 /* Non-mobile styles, 750px breakpoint */
 .animal-card{
-    background-color: blue;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background-color: rgba(255, 255, 255, 0.76);
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr .5fr;
@@ -117,14 +135,15 @@ width: 90%;
 
 .animal-card-info{
     grid-area: info;
-    background-color: green;
+    background-color: rgba(2, 2, 255, 0.521);
+    text-align:center;
 }
 
 .animal-card-img{
     margin-top:10px;
     margin-left: auto;
     margin-right: auto;
-    background-color: white;
+    background-image: linear-gradient(#58151A,#BC2909,#BA6D09,#71A8EE,#3072EB);
     border-radius: 90px;
     height: 75%;
     

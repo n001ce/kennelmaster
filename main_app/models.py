@@ -73,6 +73,10 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.user_name
 
+    def get_absolute_url(self):
+        return reverse('home')
+
+
 class ManagerManager(models.Manager):
     def get_queryset(self, *args, **kwargs):
         return super().get_queryset(*args, **kwargs).filter(type=NewUser.Types.MANAGER)

@@ -132,7 +132,7 @@ body{
 
 .main {
     grid-area: main;
-    background-image: linear-gradient(#06beb6, #48b1bf);
+    background-image: linear-gradient(#005C97, #363795);
 }
 
 .footer {

@@ -5,7 +5,6 @@
   }
   
   #task-container{
-    background-color: white;
     padding: 130px;
     display: grid;
     grid-template-columns: .5fr 1fr;

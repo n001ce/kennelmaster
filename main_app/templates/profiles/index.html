@@ -12,17 +12,7 @@
   {% for profile in profiles %}
       <div class="profile-card">
         <div class="profile-card-img">
-          <a href="{% url 'profiles_detail' profile.id %}">
-          {%if profile.type == 'MANAGER'%}
-              <a href="{%url 'profiles_detail' profile.id %}"><img src="https://img.icons8.com/external-vitaliy-gorbachev-blue-vitaly-gorbachev/50/000000/external-cleaning-labour-day-vitaliy-gorbachev-blue-vitaly-gorbachev.png"/></a>
-            {%endif%}
-            {%if profile.type == 'EMPLOYEE'%}
-              <a href="{%url 'profiles_detail' profile.id %}"><img src="https://img.icons8.com/doodle/50/000000/dog-bone--v1.png"/></a>
-            {%endif%}
-            {%if profile.type == 'OWNER'%}
-              <a href="{%url 'profiles_detail' profile.id %}"><img src="https://img.icons8.com/ios/50/000000/hand-with-a-pill.png"/></a>
-            {%endif%} 
-          </a>
+          <img src="{%static 'css/images/employees.png'%}" width ="100" height="100" alt="">
         </div>
         <div class="profile-card-user">
             <h2 class="card-title">{{ profile.first_name}}</h2>
@@ -30,6 +20,11 @@
         </div>
         <div class="profile-card-info">
           <p>{{profile.start_date}}</p>
+          {%if user.type == 'MANAGER' %}
+          {%if profile.type != 'MANAGER'%}
+          <a href="{% url 'profiles_delete' profile.id %}" class="btn danger">Delete</a>
+          {%endif%}
+          {%endif%}
         </div>
       </div>
 {%endfor%}

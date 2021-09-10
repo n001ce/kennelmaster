@@ -18,7 +18,7 @@
 /* Non-mobile styles, 750px breakpoint */
 .task-card{
     justify-content: center;
-    background-color: blue;
+    background-color: rgba(238, 238, 252, 0.5);
     display: grid;
     grid-template-columns: .5fr 1fr;
     grid-template-rows: 1fr .5fr ;
@@ -31,7 +31,7 @@
 
 .task-card-info{
     grid-area: info;
-    background-color: green;
+    background-color: rgba(99, 158, 236, 0.685);
     text-align: center;
 }
 
@@ -47,12 +47,14 @@
     
 }
 
+
+
 .task-card-img img{
     margin-top: 8px;
     margin-left: 10px;
 }
 
 .task-card-user{
-    background-color: grey;
+    background-color: rgba(250, 245, 245, 0.63);
     width: 100%;
 }

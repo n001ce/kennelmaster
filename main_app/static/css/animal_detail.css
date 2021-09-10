@@ -1,0 +1,213 @@
+.usr-img {
+    width: 300px;
+  }
+  
+  .animal-details h3 {
+    margin: 16px 0 10px 0;
+  }
+  
+  #file-input {
+    overflow: hidden;
+    position: absolute;
+    width: .1px;
+    height: .1px;
+  }
+  
+  #file-name {
+      margin-bottom: 10px;
+    }
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    #animal-container{
+        box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        background-image: linear-gradient(#005C97, #363795);
+        padding: 130px;
+        display: grid;
+        grid-template-columns: 300px .2fr .6fr;
+        grid-template-rows: .5fr .5fr;
+        grid-template-areas:
+        "image info animal"
+        "feeding feeding feeding";
+        height: 100%;
+        width: 100%;
+    }
+    /* Non-mobile styles, 750px breakpoint */
+    .feeding-container{
+        justify-content: center;
+        grid-area: feeding;
+        display: grid;
+        grid-template-columns: .25fr .5fr;
+        grid-template-rows: .33fr .33fr .33fr;
+        grid-template-areas:
+            "tophead tophead"
+            "add_feed past_feed"
+            "add_feed past_feed";
+        grid-gap:10px;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .animal-img{
+        grid-area: image;
+        height: 300px;
+        width: auto;
+        background-color:#ffffff8c;
+    }
+    
+    .animal-img img{
+    height: 300px;
+    width: auto;
+}
+
+#animal-card{
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    background-color:#ffffff8c;
+    grid-area: animal;
+    display: grid;
+    grid-template-columns: .25fr .75fr;
+    grid-template-rows: .25fr .25fr .25fr;
+    grid-template-areas:
+    "breed b_data"
+    "age a_data"
+    "owner owner_data"
+    "description d_data"
+    ;
+    grid-gap:10px;
+    height: 100%;
+    width: 100%;
+    
+}
+.animal-info{
+    bottom: 0;
+    grid-area: info;
+    justify-content: center;
+    background-color: #ffffff8c;
+}
+
+.breed{
+    text-align: center;
+    grid-area: breed;
+    background-color:burlywood;
+    width: 100%;
+}
+
+.owner{
+    text-align:center;
+    grid-area: owner;
+    background-color:cadetblue;
+    width: 100%;
+}
+
+.age{
+    text-align:center;
+    grid-area: age;
+    background-color:chartreuse;
+    width:100%;
+}
+.description{
+    text-align:center;
+    grid-area: description;
+    background-color:chartreuse;
+    width:100%;
+}
+
+.b_data{
+    background-color: lightblue;
+    grid-area: b_data;
+}
+
+.owner_data{
+    background-color: lightblue;
+    grid-area: owner_data;
+}
+
+.a_data{
+    background-color: lightblue;
+    grid-area: a_data;
+}
+
+.d_data{
+    background-color: lightblue;
+    grid-area: d_data;
+}
+
+
+.top{
+    color: white;
+    grid-area: tophead;
+    text-align: center;
+    background-color:rgba(237, 33, 255, 0.493);
+}
+.add_feeding{
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    background-color: #ffffff8c;
+    grid-area: add_feed;
+    text-align: center;
+    width: 100%;
+    height: 300px;
+}
+.past_feed{
+    grid-area: past_feed;
+    text-align: center;
+    width: 100%;
+}
+
+.past_feed h3{
+ background-color: rgba(56, 88, 231, 0.459);
+ color: white;
+}
+
+.past_feed table{
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    background-color: rgba(228, 240, 228, 0.568);
+    width: 100%;
+}
+
+.past_feed thead{
+    background-color: paleturquoise;
+}
+
+.past_feed tbody tr:nth-child(odd){
+    background-color: #4C8BF5;
+    color: #fff;
+  }
+
+
+
+.add_feeding h3{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.unfed{
+    background-color: yellow;
+}
+
+.subsection-content form{
+    height: 100%;
+}
+
+.subsection-content label{
+    font-size: 20px;
+    margin: 10px;
+}
+
+#id_date{
+    margin: 10px;
+}
+
+.subsection-content p{
+    margin: 10px;
+}
+
+#feedingbtn{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+
+}

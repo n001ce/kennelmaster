@@ -2,9 +2,6 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
-
 <link 
   href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
   rel="stylesheet" 
@@ -13,13 +10,15 @@
   src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
 >
 </script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/animal_detail.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
 <script defer src="{% static 'js/animal-detail.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-
-<section class="animal-container">
-  <div class="animal-img">
+  
+<div id="animal-container" >
+  <div class="animal-img" style="">
     {% if animal.photo.url %}
       <img 
         src="{{animal.photo.url}}" 
@@ -31,21 +30,10 @@
         src="{% static 'images/sk8r-boi-cat.svg' %}" 
         alt="A skater boy cat"
       >
-    {% endif %}
+    {%endif%}
   </div>
-  <div class="animal-details">
-    <h1>{{ animal.name }}</h1>
-    {% if animal.age > 0 %}
-      <h2>A {{ animal.age }} year old {{ animal.breed }}</h2>
-    {% else %}
-      <h2>A {{ animal.breed }} kitten.</h2>
-    {% endif %}
-    <p>{{ animal.description }}</p>
-    <div class="animal-actions">
-      <a href="{% url 'animals_update' animal.id %}" class="btn warn">Edit</a>
-      <a href="{% url 'animals_delete' animal.id %}" class="btn danger">Delete</a>
-    </div>
-    <h3>Change {{ animal.name }}'s photo</h3>
+  <div class="animal-info">
+  <h3>Change {{ animal.name }}'s photo</h3>
     <p id="file-name"></p>
     <form 
       action="{% url 'add_photo' animal.id %}"
@@ -59,28 +47,42 @@
       </label>
       <button type="submit" class="btn submit">Upload Photo</button>
     </form>
+    <a href="{% url 'animals_update' animal.id %}" class="btn warn">Edit</a>
+    <a href="{% url 'animals_delete' animal.id %}" class="btn danger">Delete</a>  
   </div>
-</section>
-{%if user.type != "OWNER"%}
-<div class="feedings-toy-container">
-  <section class="feedings">
-    <div class="subsection-title">
-      <h2>Feedings</h2>
-      <img 
-        src="" 
-        alt="An ice cream cone animal"
-      />
-      <img 
-        src=""
-        alt="A animal as onigiri"
-      />
-      <img 
-        src="" 
-        alt="A kabob of kittens"
-      />
+  <div id="animal-card">
+    <div class="breed">
+    Breed
     </div>
+    <div class="b_data">  
+    <h2>{{animal.breed}}</h2>
+    </div>
+    <div class="age">
+    Age
+    </div>
+    <div class="a_data">
+    <h2>{{animal.age}}</h2>
+    </div>
+    <div class="owner">
+    Owner:
+    </div>
+    <div class="owner_data">
+    <h2>{{animal.user.first_name}}</h2>
+    </div>
+    <div class="description">
+    Description:
+    </div>
+    <div class="d_data">
+    <h2>{{animal.description}}</h2>
+    </div>
+  </div>
+{%if user.type != "OWNER"%}
+<div class="feeding-container">
+    <div class="top">
+      <h2>Feedings</h2>
+    </div>
+    <div class="add_feeding">
     <h3>Add a Feeding</h3>
-    
       {% if animal.fed_for_today %}
         <p class="fed">{{animal.name}} has been fed all their meals for today!</p>
       {% else %}
@@ -93,9 +95,11 @@
       {% endif %}
       {% csrf_token %}
       {{ feeding_form.as_p }}
-      <button type="submit" class="btn submit">Add Feeding</button>
+      <button id="feedingbtn" type="submit" class="btn submit">Add Feeding</button>
     </form>
+    </div>
     {%endif%}
+    <div class="past_feed">
     <h3>Past Feedings</h3>
     {% if animal.feeding_set.all.count %}
       <table>
@@ -112,10 +116,9 @@
         </tbody>
       </table>
     {% else %}
-      <p class="subsection-content">{{animal.name}} has never been fed 😟</p>
+      <p class="subsection-content">{{animal.name}} has never been fed </p>
+    </div>
     {% endif %}
-  </section>
 </div>
-
 {% endblock %}
 
