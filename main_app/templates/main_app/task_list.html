@@ -15,19 +15,15 @@
           <a href="{% url 'tasks_detail' task.id %}">
           {%if task.type == 'K'%}
               <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/external-vitaliy-gorbachev-blue-vitaly-gorbachev/50/000000/external-cleaning-labour-day-vitaliy-gorbachev-blue-vitaly-gorbachev.png"/></a>
-              <h4>Kennel Cleaning</h4>
             {%endif%}
             {%if task.type == 'G'%}
               <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/doodle/50/000000/dog-bone--v1.png"/></a>
-              <h4>Group Play</h4>
             {%endif%}
             {%if task.type == 'M'%}
               <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/ios/50/000000/hand-with-a-pill.png"/></a>
-              <h4>Medication</h4>
             {%endif%}
             {%if task.type == 'F'%}
               <a href="{%url 'tasks_detail' task.id %}"><img src="https://img.icons8.com/ios/50/000000/hand-with-a-pill.png"/></a>
-              <h4>Feeding</h4>
             {%endif%}  
           </a>
         </div>

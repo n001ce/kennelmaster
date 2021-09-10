@@ -6,6 +6,8 @@ from .models import Animal, Task, NewUser, Employee, Photo
 from .forms import FeedingForm, TaskForm, CustomUserCreationForm
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 import boto3
 
@@ -15,6 +17,7 @@ BUCKET = 'kennel-manager'
 class Login(LoginView):
   template_name = 'login.html'
 
+@login_required
 def home(request):
   tasks = Task.objects.all()
   animals = Animal.objects.all()
@@ -60,7 +63,7 @@ def add_feeding(request, animal_id):
 
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('')
     template_name = 'signup.html'
 
 
