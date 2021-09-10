@@ -3,7 +3,7 @@
 2. [Visit website](https://kennelmanager.herokuapp.com/login/)
    
 
-![website](https://imgur.com/M4M2M1G)
+![website](../kennelmaster/main_app/static/css/images/README_images/kennel_manager.PNG)
 ### From the mind of a former kennel employee, comes an application that simplifies the annotation process of daily tasks performed at animal care facilities.
 
 # **Description**
@@ -25,22 +25,22 @@ _Owner_ accounts currently only give the user access to create, read, update, an
 # **How To Use**
 
 Step 1: Load Website and Login (continue) or
-![login](https://imgur.com/PdKacle)
+![login](../kennelmaster/main_app/static/css/images/README_images/login.PNG)
 
 
 Step 1a: Signup by going to the side nav bar and selecting signup
-![navbar](https://imgur.com/x74pk8D)
+![navbar](../kennelmaster/main_app/static/css/images/README_images/navbar.PNG)
 
 Step 1b: Fill out the signup form
 ![signup](../kennelmaster/main_app/static/css/images/signup1.PNG)
 Return to step 1
 
 Once logged in you can utilize the dashboard to track current tasks, animals in the kennel, create animals, create tasks, view users, and update your name and email. 
-![website](https://imgur.com/M4M2M1G)
-![website](https://imgur.com/rqVgDMZ)
-![website](https://imgur.com/vk6wAuP)
-![website](../kennelmaster/main_app/static/css/images/animal_details.PNG)
-![website](../kennelmaster/main_app/static/css/images/task_details.PNG)
+![website](../kennelmaster/main_app/static/css/images/README_images/navbar2.PNG)
+![website](../kennelmaster/main_app/static/css/images/README_images/employee_index.PNG)
+![website](../kennelmaster/main_app/static/css/images/README_images/animal_index.PNG)
+![website](../kennelmaster/main_app/static/css/images/README_images/animal_details.PNG)
+![website](../kennelmaster/main_app/static/css/images/README_images/task_details.PNG)
 When you click on the animal card you will be sent to that animals details page. From there you can edit the animals information, upload a photo, or delete the animal (Managers and Owners only).
 
 The side navbar gives you access to index views of all the animals, tasks, and employees as well as a link back to the home dashboard or to logout. 
