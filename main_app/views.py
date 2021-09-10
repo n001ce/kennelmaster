@@ -27,30 +27,34 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+@login_required
 def animals_index(request):
     animals = Animal.objects.all()
     return render(request, 'animals/index.html', { 'animals': animals })
 
+@login_required
 def profiles_index(request):
     profiles = NewUser.objects.all()
     return render(request, 'profiles/index.html', { 'profiles': profiles })
 
-
+@login_required
 def animals_detail(request, animal_id):
   animal = Animal.objects.get(id=animal_id)
   feeding_form = FeedingForm()
   return render(request, 'animals/detail.html', { 'animal': animal, 'feeding_form':feeding_form})
 
+@login_required
 def user_animal(request, user_id):
   animal = Animal.objects.filter(user_id=user_id)
   return render(request, 'animals/detail.html', {'animal': animal})
 
+@login_required
 def profiles_detail(request, user_id):
   user = NewUser.objects.get(id=user_id)
   tasks = Task.objects.filter(employee_id = user_id)
   return render(request, 'profiles/detail.html', { 'user': user, 'tasks':tasks })
 
-
+@login_required
 def add_feeding(request, animal_id):
   form = FeedingForm(request.POST)
   if form.is_valid():
@@ -75,40 +79,50 @@ class AnimalCreate(CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
 
+
 class AnimalUpdate(UpdateView):
     model = Animal
     fields = ['description', 'age']
+
 
 class AnimalDelete(DeleteView):
     model = Animal
     success_url = '/animals/'
 
+
 class NewUserUpdate(UpdateView):
   model = NewUser
   fields = ['first_name', 'email']
+
 
 class NewUserDelete(DeleteView):
   model = NewUser
   success_url = '/home'
 
+
 class TaskCreate(CreateView):
   model = Task
   fields = '__all__'
 
+
 class TaskList(ListView):
   model = Task
 
+
 class TaskDetail(DetailView):
   model = Task
+
 
 class TaskUpdate(UpdateView):
   model = Task
   fields = ['start_time', 'end_time', 'type','description', 'is_complete']
 
+
 class TaskDelete(DeleteView):
   model = Task
   success_url = '/tasks/'
 
+@login_required
 def add_photo(request, animal_id):
   photo_file = request.FILES.get('photo-file', None)
   if photo_file:
