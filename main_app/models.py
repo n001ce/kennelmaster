@@ -80,9 +80,11 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
 class ManagerManager(models.Manager):
     def get_queryset(self, *args, **kwargs):
         return super().get_queryset(*args, **kwargs).filter(type=NewUser.Types.MANAGER)
+
 class EmployeeManager(models.Manager):
     def get_queryset(self, *args, **kwargs):
         return super().get_queryset(*args, **kwargs).filter(type=NewUser.Types.EMPLOYEE)
+
 class OwnerManager(models.Manager):
     def get_queryset(self, *args, **kwargs):
         return super().get_queryset(*args, **kwargs).filter(type=NewUser.Types.OWNER)
@@ -128,17 +130,6 @@ class Animal(models.Model):
        
     def located_at(self):
         return self.room_set.count()>=1
-
-class Room(models.Model):
-    room = models.IntegerField()
-    animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
-    is_clean = models.BooleanField()
-
-    def __str__(self):
-        return self.room
-    
-    def get_absolute_url(self):
-        return reverse('room_detail', kwargs={'room_id':self.id})
 
 
 class Feeding(models.Model):

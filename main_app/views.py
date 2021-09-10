@@ -63,7 +63,7 @@ def add_feeding(request, animal_id):
 
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy('')
+    success_url = reverse_lazy('home')
     template_name = 'signup.html'
 
 
